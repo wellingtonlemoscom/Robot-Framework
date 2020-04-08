@@ -1,0 +1,95 @@
+ROBOT FRAMEWORK
+
+== Instalação ==
+1- Instalar Python
+2- Instalar Vscode -> Plugins Robot Framework e Python
+3- Instalar o Cmder
+4- No cmder: "pip install robotframework"
+5- No cmder: "pip install robotframework-seleniumlibrary"
+
+
+== Anotações | Aula 01 ==
+
+- *** Settings *** = São as configurações do teste
+- Library		app.py = Está importando o código python para o Robot através de palavra chave 
+- *** Test Cases *** = Seção que contém os casos de testes
+- ${result}=		Welcome		Fernando = Criando uma variável no Robot
+- Log To Console = Keyword que serve para exibir a mensagem no console
+- Should Be Equal = Keyword usado para comparar dois parâmetros
+- O Robot trabalha através de Keywords (palavras chaves);
+
+== Anotações | Aula 02 ==
+
+- Open Browser URL NAVEGADOR = Keyword usado para abrir o navegador
+- Title Should Be TITULO = Keyword que recebe um argumento para validar se é um título
+- Close Browser = Keyword usado para fechar o navegador
+
+== Anotações | Aula 03 ==
+
+- Em todas as execuções de testes é gerado: output, log e report, na pasta raiz
+- Para organizar isto, junto ao comando de execução, deve ser utilizado: "robot -d ./log test.robot"
+
+== Anotações | Aula 04 ==
+
+- Go To URL = Keyword para acessar uma URL
+- *** Variables *** = Seção que contém as variáveis
+- ${VARIÁVEL} CONTÉUDO = Criar uma variável no Robot
+- Select checkboxes LOCALICADOR = Keyword que busca e marca um checkbox
+- Checkbox Should Be Selected LOCALIZADOR = Keyword que também busca e marca um checkbox
+- Sheep = Keyword para pausar o teste por segundo
+- [tags] NOME = Criação de tags para diferenciar cenários
+- "robot -d ./log -i TAG ARQUIVO" = Executando apenas os com tag específica
+
+== Anotações | Aula 05 ==
+
+- Test Setup = Keyword que define tudo que será executado antes de cada cenários de teste
+- Test Teardown = Keyword que define tudo que será executado após os cenários de testes
+- *** Keywords *** = Seção usada para criar Keywords
+- Resource ARQUVIO.ROBOT = Keyword usado para herdar Keywords de outros arquivos
+- "robot -d ./log PASTA\ = Roda todos os testes inseridos dentro da pasta
+- Uma boa prática é criar o arquivo "base.robot" com os Keywords base para todos os casos
+
+== Anotações | Aula 06 ==
+
+- Capture Page Screenshot = Keyword que realize um screenshot da tela e anexo aos logs
+
+== Anotações | Aula 07 ==
+
+- Select Radio Button GRUPRADIO LOCALIZADOR = Keyword usado para seleciona uma opção de radio
+- Radio Button Should Be Set To GRUPRADIO LOCALIZADOR = Keyword que verica se a opção radio está marcada
+- Ambas Keyword selecionam por padrão através de Id e Value
+
+== Anotações | Aula 08 ==
+
+- Select From List By Label GRUPLIST LABEL = Keyword que seleciona um elemento de um dropdown pelo label
+- Select From List By Value GRUPLIST VALUE = Keyword que seleciona um elemento de um dropdown pelo valor
+- Get Selected List Value = Keyword que armazena o valor do elemento selecionado no dropdown
+
+== Anotações | Aula 09 ==
+
+- Table Row Should Contain TABELA LINHA VALOR = Keyword que verifica o elemento que contém uma determinada linha da tabela
+- Get WebElement = Keyword usada para buscar um elemento qualquer e salvar nele próprio
+- Podemos definer o tipo de variável com "${target.text}"
+- Log ELEMENTO = Grava nos reports o valor do elemento
+- Log Console ELEMENTO = Gravo no console o valor do elemento
+
+== Anotações | Aula 10 ==
+
+- Input Text LOCALIZADOR ENTRADA = Keyword para inserir conteúdo em forms
+- "css:input[name=username]" = Usar um localizador do tipo css
+- "class:btn-login" = Usar um localizador do tipo class
+
+== Anotações | Aula 11 ==
+
+- Page Objets:
+  *** Keywords ***
+    NOME KEYWORD
+      [Arguments] VARIÁVEL01 N...
+      CÓDIGO QUE USA AS VARIÁVEIS
+      N...
+- Para executar o page objet, precisamos apenas passar o NOME KEYWORD e a varíavel que deseja usar.
+
+
+
+
+
