@@ -1,0 +1,592 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 3.1.2 (Python 3.8.2 on win32)" generated="20200516 23:57:32.462" rpa="false">
+<suite id="s1" name="Tests" source="C:\Projects\Desafio Conductor\backend\tests">
+<suite id="s1-s1" name="Request Resource" source="C:\Projects\Desafio Conductor\backend\tests\request_resource.robot">
+<test id="s1-s1-t1" name="Get List">
+<kw name="Get Resources" library="services">
+<arguments>
+<arg>${EMPTY}</arg>
+</arguments>
+<assign>
+<var>${resp}</var>
+</assign>
+<kw name="Create Session" library="RequestsLibrary">
+<doc>Create Session: create a HTTP session to a server</doc>
+<arguments>
+<arg>reqres</arg>
+<arg>https://reqres.in/api</arg>
+</arguments>
+<msg timestamp="20200516 23:57:32.775" level="INFO">Creating Session using : alias=reqres, url=https://reqres.in/api, headers={},                     cookies={}, auth=None, timeout=None, proxies=None, verify=False,                     debug=0 </msg>
+<status status="PASS" starttime="20200516 23:57:32.775" endtime="20200516 23:57:32.775"></status>
+</kw>
+<kw name="Get Request" library="RequestsLibrary">
+<doc>Send a GET request on the session object found using the
+given `alias`</doc>
+<arguments>
+<arg>reqres</arg>
+<arg>unknown/${id}</arg>
+</arguments>
+<assign>
+<var>${resp}</var>
+</assign>
+<msg timestamp="20200516 23:57:33.118" level="INFO">GET Request : url=https://reqres.in/api/unknown/ 
+ path_url=/api/unknown/ 
+ headers={'User-Agent': 'python-requests/2.23.0', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive'} 
+ body=None 
+ </msg>
+<msg timestamp="20200516 23:57:33.118" level="INFO">GET Response : url=https://reqres.in/api/unknown/ 
+ status=200, reason=OK 
+ body={"page":1,"per_page":6,"total":12,"total_pages":2,"data":[{"id":1,"name":"cerulean","year":2000,"color":"#98B2D1","pantone_value":"15-4020"},{"id":2,"name":"fuchsia rose","year":2001,"color":"#C74375","pantone_value":"17-2031"},{"id":3,"name":"true red","year":2002,"color":"#BF1932","pantone_value":"19-1664"},{"id":4,"name":"aqua sky","year":2003,"color":"#7BC4C4","pantone_value":"14-4811"},{"id":5,"name":"tigerlily","year":2004,"color":"#E2583E","pantone_value":"17-1456"},{"id":6,"name":"blue turquoise","year":2005,"color":"#53B0AE","pantone_value":"15-5217"}],"ad":{"company":"StatusCode Weekly","url":"http://statuscode.org/","text":"A weekly newsletter focusing on software development, infrastructure, the server, performance, and the stack end of things."}} 
+ </msg>
+<msg timestamp="20200516 23:57:33.118" level="INFO">c:\python38\lib\site-packages\urllib3\connectionpool.py:997: InsecureRequestWarning: Unverified HTTPS request is being made to host 'reqres.in'. Adding certificate verification is strongly advised. See: https://urllib3.readthedocs.io/en/latest/advanced-usage.html#ssl-warnings
+  warnings.warn(</msg>
+<msg timestamp="20200516 23:57:33.118" level="INFO">${resp} = &lt;Response [200]&gt;</msg>
+<status status="PASS" starttime="20200516 23:57:32.775" endtime="20200516 23:57:33.118"></status>
+</kw>
+<msg timestamp="20200516 23:57:33.134" level="INFO">${resp} = &lt;Response [200]&gt;</msg>
+<status status="PASS" starttime="20200516 23:57:32.775" endtime="20200516 23:57:33.134"></status>
+</kw>
+<kw name="Status Should Be" library="RequestsLibrary">
+<doc>Fails if response status code is different than the expected.</doc>
+<arguments>
+<arg>200</arg>
+<arg>${resp}</arg>
+</arguments>
+<status status="PASS" starttime="20200516 23:57:33.134" endtime="20200516 23:57:33.134"></status>
+</kw>
+<status status="PASS" starttime="20200516 23:57:32.775" endtime="20200516 23:57:33.134" critical="yes"></status>
+</test>
+<test id="s1-s1-t2" name="Get Single">
+<kw name="Get Resources" library="services">
+<arguments>
+<arg>2</arg>
+</arguments>
+<assign>
+<var>${resp}</var>
+</assign>
+<kw name="Create Session" library="RequestsLibrary">
+<doc>Create Session: create a HTTP session to a server</doc>
+<arguments>
+<arg>reqres</arg>
+<arg>https://reqres.in/api</arg>
+</arguments>
+<msg timestamp="20200516 23:57:33.134" level="INFO">Creating Session using : alias=reqres, url=https://reqres.in/api, headers={},                     cookies={}, auth=None, timeout=None, proxies=None, verify=False,                     debug=0 </msg>
+<status status="PASS" starttime="20200516 23:57:33.134" endtime="20200516 23:57:33.134"></status>
+</kw>
+<kw name="Get Request" library="RequestsLibrary">
+<doc>Send a GET request on the session object found using the
+given `alias`</doc>
+<arguments>
+<arg>reqres</arg>
+<arg>unknown/${id}</arg>
+</arguments>
+<assign>
+<var>${resp}</var>
+</assign>
+<msg timestamp="20200516 23:57:33.400" level="INFO">GET Request : url=https://reqres.in/api/unknown/2 
+ path_url=/api/unknown/2 
+ headers={'User-Agent': 'python-requests/2.23.0', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive'} 
+ body=None 
+ </msg>
+<msg timestamp="20200516 23:57:33.400" level="INFO">GET Response : url=https://reqres.in/api/unknown/2 
+ status=200, reason=OK 
+ body={"data":{"id":2,"name":"fuchsia rose","year":2001,"color":"#C74375","pantone_value":"17-2031"},"ad":{"company":"StatusCode Weekly","url":"http://statuscode.org/","text":"A weekly newsletter focusing on software development, infrastructure, the server, performance, and the stack end of things."}} 
+ </msg>
+<msg timestamp="20200516 23:57:33.400" level="INFO">c:\python38\lib\site-packages\urllib3\connectionpool.py:997: InsecureRequestWarning: Unverified HTTPS request is being made to host 'reqres.in'. Adding certificate verification is strongly advised. See: https://urllib3.readthedocs.io/en/latest/advanced-usage.html#ssl-warnings
+  warnings.warn(</msg>
+<msg timestamp="20200516 23:57:33.400" level="INFO">${resp} = &lt;Response [200]&gt;</msg>
+<status status="PASS" starttime="20200516 23:57:33.134" endtime="20200516 23:57:33.400"></status>
+</kw>
+<msg timestamp="20200516 23:57:33.400" level="INFO">${resp} = &lt;Response [200]&gt;</msg>
+<status status="PASS" starttime="20200516 23:57:33.134" endtime="20200516 23:57:33.400"></status>
+</kw>
+<kw name="Status Should Be" library="RequestsLibrary">
+<doc>Fails if response status code is different than the expected.</doc>
+<arguments>
+<arg>200</arg>
+<arg>${resp}</arg>
+</arguments>
+<status status="PASS" starttime="20200516 23:57:33.415" endtime="20200516 23:57:33.415"></status>
+</kw>
+<status status="PASS" starttime="20200516 23:57:33.134" endtime="20200516 23:57:33.415" critical="yes"></status>
+</test>
+<test id="s1-s1-t3" name="Get Single 404">
+<kw name="Get Resources" library="services">
+<arguments>
+<arg>23</arg>
+</arguments>
+<assign>
+<var>${resp}</var>
+</assign>
+<kw name="Create Session" library="RequestsLibrary">
+<doc>Create Session: create a HTTP session to a server</doc>
+<arguments>
+<arg>reqres</arg>
+<arg>https://reqres.in/api</arg>
+</arguments>
+<msg timestamp="20200516 23:57:33.415" level="INFO">Creating Session using : alias=reqres, url=https://reqres.in/api, headers={},                     cookies={}, auth=None, timeout=None, proxies=None, verify=False,                     debug=0 </msg>
+<status status="PASS" starttime="20200516 23:57:33.415" endtime="20200516 23:57:33.415"></status>
+</kw>
+<kw name="Get Request" library="RequestsLibrary">
+<doc>Send a GET request on the session object found using the
+given `alias`</doc>
+<arguments>
+<arg>reqres</arg>
+<arg>unknown/${id}</arg>
+</arguments>
+<assign>
+<var>${resp}</var>
+</assign>
+<msg timestamp="20200516 23:57:34.114" level="INFO">GET Request : url=https://reqres.in/api/unknown/23 
+ path_url=/api/unknown/23 
+ headers={'User-Agent': 'python-requests/2.23.0', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive'} 
+ body=None 
+ </msg>
+<msg timestamp="20200516 23:57:34.114" level="INFO">GET Response : url=https://reqres.in/api/unknown/23 
+ status=404, reason=Not Found 
+ body={} 
+ </msg>
+<msg timestamp="20200516 23:57:34.114" level="INFO">c:\python38\lib\site-packages\urllib3\connectionpool.py:997: InsecureRequestWarning: Unverified HTTPS request is being made to host 'reqres.in'. Adding certificate verification is strongly advised. See: https://urllib3.readthedocs.io/en/latest/advanced-usage.html#ssl-warnings
+  warnings.warn(</msg>
+<msg timestamp="20200516 23:57:34.114" level="INFO">${resp} = &lt;Response [404]&gt;</msg>
+<status status="PASS" starttime="20200516 23:57:33.415" endtime="20200516 23:57:34.114"></status>
+</kw>
+<msg timestamp="20200516 23:57:34.114" level="INFO">${resp} = &lt;Response [404]&gt;</msg>
+<status status="PASS" starttime="20200516 23:57:33.415" endtime="20200516 23:57:34.114"></status>
+</kw>
+<kw name="Status Should Be" library="RequestsLibrary">
+<doc>Fails if response status code is different than the expected.</doc>
+<arguments>
+<arg>404</arg>
+<arg>${resp}</arg>
+</arguments>
+<status status="PASS" starttime="20200516 23:57:34.114" endtime="20200516 23:57:34.114"></status>
+</kw>
+<status status="PASS" starttime="20200516 23:57:33.415" endtime="20200516 23:57:34.114" critical="yes"></status>
+</test>
+<doc>Reqres API / Resources</doc>
+<status status="PASS" starttime="20200516 23:57:32.525" endtime="20200516 23:57:34.114"></status>
+</suite>
+<suite id="s1-s2" name="Request Users" source="C:\Projects\Desafio Conductor\backend\tests\request_users.robot">
+<test id="s1-s2-t1" name="Post Create User">
+<kw name="Get Json" library="services">
+<arguments>
+<arg>user01.json</arg>
+</arguments>
+<assign>
+<var>${payload}</var>
+</assign>
+<kw name="Get File" library="OperatingSystem">
+<doc>Returns the contents of a specified file.</doc>
+<arguments>
+<arg>${EXECDIR}/resources/fixtures/${json_file}</arg>
+</arguments>
+<assign>
+<var>${file}</var>
+</assign>
+<msg timestamp="20200516 23:57:34.130" level="INFO" html="yes">Getting file '&lt;a href="file://C:\Projects\Desafio Conductor\backend\resources\fixtures\user01.json"&gt;C:\Projects\Desafio Conductor\backend\resources\fixtures\user01.json&lt;/a&gt;'.</msg>
+<msg timestamp="20200516 23:57:34.130" level="INFO">${file} = {
+    "name": "morpheus",
+    "job": "leader"
+}</msg>
+<status status="PASS" starttime="20200516 23:57:34.130" endtime="20200516 23:57:34.130"></status>
+</kw>
+<kw name="Evaluate" library="BuiltIn">
+<doc>Evaluates the given expression in Python and returns the results.</doc>
+<arguments>
+<arg>json.loads($file)</arg>
+<arg>json</arg>
+</arguments>
+<assign>
+<var>${json}</var>
+</assign>
+<msg timestamp="20200516 23:57:34.145" level="INFO">${json} = {'name': 'morpheus', 'job': 'leader'}</msg>
+<status status="PASS" starttime="20200516 23:57:34.130" endtime="20200516 23:57:34.145"></status>
+</kw>
+<msg timestamp="20200516 23:57:34.145" level="INFO">${payload} = {'name': 'morpheus', 'job': 'leader'}</msg>
+<status status="PASS" starttime="20200516 23:57:34.130" endtime="20200516 23:57:34.145"></status>
+</kw>
+<kw name="Post User" library="services">
+<arguments>
+<arg>${payload}</arg>
+</arguments>
+<assign>
+<var>${resp}</var>
+</assign>
+<kw name="Create Session" library="RequestsLibrary">
+<doc>Create Session: create a HTTP session to a server</doc>
+<arguments>
+<arg>reqres</arg>
+<arg>https://reqres.in/api</arg>
+</arguments>
+<msg timestamp="20200516 23:57:34.145" level="INFO">Creating Session using : alias=reqres, url=https://reqres.in/api, headers={},                     cookies={}, auth=None, timeout=None, proxies=None, verify=False,                     debug=0 </msg>
+<status status="PASS" starttime="20200516 23:57:34.145" endtime="20200516 23:57:34.145"></status>
+</kw>
+<kw name="Post Request" library="RequestsLibrary">
+<doc>Send a POST request on the session object found using the
+given `alias`</doc>
+<arguments>
+<arg>reqres</arg>
+<arg>users/</arg>
+<arg>${payload}</arg>
+</arguments>
+<assign>
+<var>${resp}</var>
+</assign>
+<msg timestamp="20200516 23:57:34.786" level="INFO">POST Request : url=https://reqres.in/api/users/ 
+ path_url=/api/users/ 
+ headers={'User-Agent': 'python-requests/2.23.0', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'Content-Length': '24'} 
+ body=name=morpheus&amp;job=leader 
+ </msg>
+<msg timestamp="20200516 23:57:34.786" level="INFO">POST Response : url=https://reqres.in/api/users/ 
+ status=201, reason=Created 
+ body={"id":"2","createdAt":"2020-05-17T02:57:34.505Z"} 
+ </msg>
+<msg timestamp="20200516 23:57:34.786" level="INFO">c:\python38\lib\site-packages\urllib3\connectionpool.py:997: InsecureRequestWarning: Unverified HTTPS request is being made to host 'reqres.in'. Adding certificate verification is strongly advised. See: https://urllib3.readthedocs.io/en/latest/advanced-usage.html#ssl-warnings
+  warnings.warn(</msg>
+<msg timestamp="20200516 23:57:34.786" level="INFO">${resp} = &lt;Response [201]&gt;</msg>
+<status status="PASS" starttime="20200516 23:57:34.145" endtime="20200516 23:57:34.786"></status>
+</kw>
+<msg timestamp="20200516 23:57:34.786" level="INFO">${resp} = &lt;Response [201]&gt;</msg>
+<status status="PASS" starttime="20200516 23:57:34.145" endtime="20200516 23:57:34.786"></status>
+</kw>
+<kw name="Status Should Be" library="RequestsLibrary">
+<doc>Fails if response status code is different than the expected.</doc>
+<arguments>
+<arg>201</arg>
+<arg>${resp}</arg>
+</arguments>
+<status status="PASS" starttime="20200516 23:57:34.786" endtime="20200516 23:57:34.786"></status>
+</kw>
+<status status="PASS" starttime="20200516 23:57:34.130" endtime="20200516 23:57:34.786" critical="yes"></status>
+</test>
+<test id="s1-s2-t2" name="Put Update User">
+<kw name="Get Json" library="services">
+<arguments>
+<arg>user02.json</arg>
+</arguments>
+<assign>
+<var>${payload}</var>
+</assign>
+<kw name="Get File" library="OperatingSystem">
+<doc>Returns the contents of a specified file.</doc>
+<arguments>
+<arg>${EXECDIR}/resources/fixtures/${json_file}</arg>
+</arguments>
+<assign>
+<var>${file}</var>
+</assign>
+<msg timestamp="20200516 23:57:34.801" level="INFO" html="yes">Getting file '&lt;a href="file://C:\Projects\Desafio Conductor\backend\resources\fixtures\user02.json"&gt;C:\Projects\Desafio Conductor\backend\resources\fixtures\user02.json&lt;/a&gt;'.</msg>
+<msg timestamp="20200516 23:57:34.801" level="INFO">${file} = {
+    "name": "morpheus",
+    "job": "zion resident"
+}</msg>
+<status status="PASS" starttime="20200516 23:57:34.801" endtime="20200516 23:57:34.801"></status>
+</kw>
+<kw name="Evaluate" library="BuiltIn">
+<doc>Evaluates the given expression in Python and returns the results.</doc>
+<arguments>
+<arg>json.loads($file)</arg>
+<arg>json</arg>
+</arguments>
+<assign>
+<var>${json}</var>
+</assign>
+<msg timestamp="20200516 23:57:34.801" level="INFO">${json} = {'name': 'morpheus', 'job': 'zion resident'}</msg>
+<status status="PASS" starttime="20200516 23:57:34.801" endtime="20200516 23:57:34.801"></status>
+</kw>
+<msg timestamp="20200516 23:57:34.801" level="INFO">${payload} = {'name': 'morpheus', 'job': 'zion resident'}</msg>
+<status status="PASS" starttime="20200516 23:57:34.801" endtime="20200516 23:57:34.801"></status>
+</kw>
+<kw name="Put User" library="services">
+<arguments>
+<arg>2</arg>
+<arg>${payload}</arg>
+</arguments>
+<assign>
+<var>${resp}</var>
+</assign>
+<kw name="Create Session" library="RequestsLibrary">
+<doc>Create Session: create a HTTP session to a server</doc>
+<arguments>
+<arg>reqres</arg>
+<arg>https://reqres.in/api</arg>
+</arguments>
+<msg timestamp="20200516 23:57:34.817" level="INFO">Creating Session using : alias=reqres, url=https://reqres.in/api, headers={},                     cookies={}, auth=None, timeout=None, proxies=None, verify=False,                     debug=0 </msg>
+<status status="PASS" starttime="20200516 23:57:34.817" endtime="20200516 23:57:34.817"></status>
+</kw>
+<kw name="Put Request" library="RequestsLibrary">
+<doc>Send a PUT request on the session object found using the
+given `alias`</doc>
+<arguments>
+<arg>reqres</arg>
+<arg>users/${id}</arg>
+<arg>${payload}</arg>
+</arguments>
+<assign>
+<var>${resp}</var>
+</assign>
+<msg timestamp="20200516 23:57:35.474" level="INFO">PUT Request : url=https://reqres.in/api/users/2 
+ path_url=/api/users/2 
+ headers={'User-Agent': 'python-requests/2.23.0', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'Content-Length': '31'} 
+ body=name=morpheus&amp;job=zion+resident 
+ </msg>
+<msg timestamp="20200516 23:57:35.474" level="INFO">PUT Response : url=https://reqres.in/api/users/2 
+ status=200, reason=OK 
+ body={"updatedAt":"2020-05-17T02:57:35.184Z"} 
+ </msg>
+<msg timestamp="20200516 23:57:35.475" level="INFO">c:\python38\lib\site-packages\urllib3\connectionpool.py:997: InsecureRequestWarning: Unverified HTTPS request is being made to host 'reqres.in'. Adding certificate verification is strongly advised. See: https://urllib3.readthedocs.io/en/latest/advanced-usage.html#ssl-warnings
+  warnings.warn(</msg>
+<msg timestamp="20200516 23:57:35.478" level="INFO">${resp} = &lt;Response [200]&gt;</msg>
+<status status="PASS" starttime="20200516 23:57:34.817" endtime="20200516 23:57:35.478"></status>
+</kw>
+<msg timestamp="20200516 23:57:35.479" level="INFO">${resp} = &lt;Response [200]&gt;</msg>
+<status status="PASS" starttime="20200516 23:57:34.817" endtime="20200516 23:57:35.479"></status>
+</kw>
+<kw name="Status Should Be" library="RequestsLibrary">
+<doc>Fails if response status code is different than the expected.</doc>
+<arguments>
+<arg>200</arg>
+<arg>${resp}</arg>
+</arguments>
+<status status="PASS" starttime="20200516 23:57:35.480" endtime="20200516 23:57:35.481"></status>
+</kw>
+<status status="PASS" starttime="20200516 23:57:34.801" endtime="20200516 23:57:35.483" critical="yes"></status>
+</test>
+<test id="s1-s2-t3" name="Get List User">
+<kw name="Get User" library="services">
+<arguments>
+<arg>2</arg>
+</arguments>
+<assign>
+<var>${resp}</var>
+</assign>
+<kw name="Create Session" library="RequestsLibrary">
+<doc>Create Session: create a HTTP session to a server</doc>
+<arguments>
+<arg>reqres</arg>
+<arg>https://reqres.in/api</arg>
+</arguments>
+<msg timestamp="20200516 23:57:35.492" level="INFO">Creating Session using : alias=reqres, url=https://reqres.in/api, headers={},                     cookies={}, auth=None, timeout=None, proxies=None, verify=False,                     debug=0 </msg>
+<status status="PASS" starttime="20200516 23:57:35.491" endtime="20200516 23:57:35.494"></status>
+</kw>
+<kw name="Get Request" library="RequestsLibrary">
+<doc>Send a GET request on the session object found using the
+given `alias`</doc>
+<arguments>
+<arg>reqres</arg>
+<arg>users/${id}</arg>
+</arguments>
+<assign>
+<var>${resp}</var>
+</assign>
+<msg timestamp="20200516 23:57:35.750" level="INFO">GET Request : url=https://reqres.in/api/users/2 
+ path_url=/api/users/2 
+ headers={'User-Agent': 'python-requests/2.23.0', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive'} 
+ body=None 
+ </msg>
+<msg timestamp="20200516 23:57:35.751" level="INFO">GET Response : url=https://reqres.in/api/users/2 
+ status=200, reason=OK 
+ body={"data":{"id":2,"email":"janet.weaver@reqres.in","first_name":"Janet","last_name":"Weaver","avatar":"https://s3.amazonaws.com/uifaces/faces/twitter/josephstein/128.jpg"},"ad":{"company":"StatusCode Weekly","url":"http://statuscode.org/","text":"A weekly newsletter focusing on software development, infrastructure, the server, performance, and the stack end of things."}} 
+ </msg>
+<msg timestamp="20200516 23:57:35.751" level="INFO">c:\python38\lib\site-packages\urllib3\connectionpool.py:997: InsecureRequestWarning: Unverified HTTPS request is being made to host 'reqres.in'. Adding certificate verification is strongly advised. See: https://urllib3.readthedocs.io/en/latest/advanced-usage.html#ssl-warnings
+  warnings.warn(</msg>
+<msg timestamp="20200516 23:57:35.756" level="INFO">${resp} = &lt;Response [200]&gt;</msg>
+<status status="PASS" starttime="20200516 23:57:35.495" endtime="20200516 23:57:35.756"></status>
+</kw>
+<msg timestamp="20200516 23:57:35.757" level="INFO">${resp} = &lt;Response [200]&gt;</msg>
+<status status="PASS" starttime="20200516 23:57:35.490" endtime="20200516 23:57:35.757"></status>
+</kw>
+<kw name="Status Should Be" library="RequestsLibrary">
+<doc>Fails if response status code is different than the expected.</doc>
+<arguments>
+<arg>200</arg>
+<arg>${resp}</arg>
+</arguments>
+<status status="PASS" starttime="20200516 23:57:35.760" endtime="20200516 23:57:35.761"></status>
+</kw>
+<status status="PASS" starttime="20200516 23:57:35.488" endtime="20200516 23:57:35.762" critical="yes"></status>
+</test>
+<test id="s1-s2-t4" name="Get List User 404">
+<kw name="Get User" library="services">
+<arguments>
+<arg>23</arg>
+</arguments>
+<assign>
+<var>${resp}</var>
+</assign>
+<kw name="Create Session" library="RequestsLibrary">
+<doc>Create Session: create a HTTP session to a server</doc>
+<arguments>
+<arg>reqres</arg>
+<arg>https://reqres.in/api</arg>
+</arguments>
+<msg timestamp="20200516 23:57:35.773" level="INFO">Creating Session using : alias=reqres, url=https://reqres.in/api, headers={},                     cookies={}, auth=None, timeout=None, proxies=None, verify=False,                     debug=0 </msg>
+<status status="PASS" starttime="20200516 23:57:35.771" endtime="20200516 23:57:35.774"></status>
+</kw>
+<kw name="Get Request" library="RequestsLibrary">
+<doc>Send a GET request on the session object found using the
+given `alias`</doc>
+<arguments>
+<arg>reqres</arg>
+<arg>users/${id}</arg>
+</arguments>
+<assign>
+<var>${resp}</var>
+</assign>
+<msg timestamp="20200516 23:57:36.429" level="INFO">GET Request : url=https://reqres.in/api/users/23 
+ path_url=/api/users/23 
+ headers={'User-Agent': 'python-requests/2.23.0', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive'} 
+ body=None 
+ </msg>
+<msg timestamp="20200516 23:57:36.429" level="INFO">GET Response : url=https://reqres.in/api/users/23 
+ status=404, reason=Not Found 
+ body={} 
+ </msg>
+<msg timestamp="20200516 23:57:36.429" level="INFO">c:\python38\lib\site-packages\urllib3\connectionpool.py:997: InsecureRequestWarning: Unverified HTTPS request is being made to host 'reqres.in'. Adding certificate verification is strongly advised. See: https://urllib3.readthedocs.io/en/latest/advanced-usage.html#ssl-warnings
+  warnings.warn(</msg>
+<msg timestamp="20200516 23:57:36.429" level="INFO">${resp} = &lt;Response [404]&gt;</msg>
+<status status="PASS" starttime="20200516 23:57:35.775" endtime="20200516 23:57:36.429"></status>
+</kw>
+<msg timestamp="20200516 23:57:36.429" level="INFO">${resp} = &lt;Response [404]&gt;</msg>
+<status status="PASS" starttime="20200516 23:57:35.770" endtime="20200516 23:57:36.429"></status>
+</kw>
+<kw name="Status Should Be" library="RequestsLibrary">
+<doc>Fails if response status code is different than the expected.</doc>
+<arguments>
+<arg>404</arg>
+<arg>${resp}</arg>
+</arguments>
+<status status="PASS" starttime="20200516 23:57:36.429" endtime="20200516 23:57:36.429"></status>
+</kw>
+<status status="PASS" starttime="20200516 23:57:35.767" endtime="20200516 23:57:36.444" critical="yes"></status>
+</test>
+<test id="s1-s2-t5" name="Get List Users">
+<kw name="Get User" library="services">
+<arguments>
+<arg>?page=2</arg>
+</arguments>
+<assign>
+<var>${resp}</var>
+</assign>
+<kw name="Create Session" library="RequestsLibrary">
+<doc>Create Session: create a HTTP session to a server</doc>
+<arguments>
+<arg>reqres</arg>
+<arg>https://reqres.in/api</arg>
+</arguments>
+<msg timestamp="20200516 23:57:36.444" level="INFO">Creating Session using : alias=reqres, url=https://reqres.in/api, headers={},                     cookies={}, auth=None, timeout=None, proxies=None, verify=False,                     debug=0 </msg>
+<status status="PASS" starttime="20200516 23:57:36.444" endtime="20200516 23:57:36.444"></status>
+</kw>
+<kw name="Get Request" library="RequestsLibrary">
+<doc>Send a GET request on the session object found using the
+given `alias`</doc>
+<arguments>
+<arg>reqres</arg>
+<arg>users/${id}</arg>
+</arguments>
+<assign>
+<var>${resp}</var>
+</assign>
+<msg timestamp="20200516 23:57:37.101" level="INFO">GET Request : url=https://reqres.in/api/users/?page=2 
+ path_url=/api/users/?page=2 
+ headers={'User-Agent': 'python-requests/2.23.0', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive'} 
+ body=None 
+ </msg>
+<msg timestamp="20200516 23:57:37.101" level="INFO">GET Response : url=https://reqres.in/api/users/?page=2 
+ status=200, reason=OK 
+ body={"page":2,"per_page":6,"total":12,"total_pages":2,"data":[{"id":7,"email":"michael.lawson@reqres.in","first_name":"Michael","last_name":"Lawson","avatar":"https://s3.amazonaws.com/uifaces/faces/twitter/follettkyle/128.jpg"},{"id":8,"email":"lindsay.ferguson@reqres.in","first_name":"Lindsay","last_name":"Ferguson","avatar":"https://s3.amazonaws.com/uifaces/faces/twitter/araa3185/128.jpg"},{"id":9,"email":"tobias.funke@reqres.in","first_name":"Tobias","last_name":"Funke","avatar":"https://s3.amazonaws.com/uifaces/faces/twitter/vivekprvr/128.jpg"},{"id":10,"email":"byron.fields@reqres.in","first_name":"Byron","last_name":"Fields","avatar":"https://s3.amazonaws.com/uifaces/faces/twitter/russoedu/128.jpg"},{"id":11,"email":"george.edwards@reqres.in","first_name":"George","last_name":"Edwards","avatar":"https://s3.amazonaws.com/uifaces/faces/twitter/mrmoiree/128.jpg"},{"id":12,"email":"rachel.howell@reqres.in","first_name":"Rachel","last_name":"Howell","avatar":"https://s3.amazonaws.com/uifaces/faces/twitter/hebertialmeida/128.jpg"}],"ad":{"company":"StatusCode Weekly","url":"http://statuscode.org/","text":"A weekly newsletter focusing on software development, infrastructure, the server, performance, and the stack end of things."}} 
+ </msg>
+<msg timestamp="20200516 23:57:37.102" level="INFO">c:\python38\lib\site-packages\urllib3\connectionpool.py:997: InsecureRequestWarning: Unverified HTTPS request is being made to host 'reqres.in'. Adding certificate verification is strongly advised. See: https://urllib3.readthedocs.io/en/latest/advanced-usage.html#ssl-warnings
+  warnings.warn(</msg>
+<msg timestamp="20200516 23:57:37.108" level="INFO">${resp} = &lt;Response [200]&gt;</msg>
+<status status="PASS" starttime="20200516 23:57:36.444" endtime="20200516 23:57:37.108"></status>
+</kw>
+<msg timestamp="20200516 23:57:37.109" level="INFO">${resp} = &lt;Response [200]&gt;</msg>
+<status status="PASS" starttime="20200516 23:57:36.444" endtime="20200516 23:57:37.109"></status>
+</kw>
+<kw name="Status Should Be" library="RequestsLibrary">
+<doc>Fails if response status code is different than the expected.</doc>
+<arguments>
+<arg>200</arg>
+<arg>${resp}</arg>
+</arguments>
+<status status="PASS" starttime="20200516 23:57:37.111" endtime="20200516 23:57:37.112"></status>
+</kw>
+<status status="PASS" starttime="20200516 23:57:36.444" endtime="20200516 23:57:37.114" critical="yes"></status>
+</test>
+<test id="s1-s2-t6" name="Delete User">
+<kw name="Delete User" library="services">
+<arguments>
+<arg>2</arg>
+</arguments>
+<assign>
+<var>${resp}</var>
+</assign>
+<kw name="Create Session" library="RequestsLibrary">
+<doc>Create Session: create a HTTP session to a server</doc>
+<arguments>
+<arg>reqres</arg>
+<arg>https://reqres.in/api</arg>
+</arguments>
+<msg timestamp="20200516 23:57:37.124" level="INFO">Creating Session using : alias=reqres, url=https://reqres.in/api, headers={},                     cookies={}, auth=None, timeout=None, proxies=None, verify=False,                     debug=0 </msg>
+<status status="PASS" starttime="20200516 23:57:37.123" endtime="20200516 23:57:37.125"></status>
+</kw>
+<kw name="Delete Request" library="RequestsLibrary">
+<doc>Send a DELETE request on the session object found using the
+given `alias`</doc>
+<arguments>
+<arg>reqres</arg>
+<arg>users/${id}</arg>
+</arguments>
+<assign>
+<var>${resp}</var>
+</assign>
+<msg timestamp="20200516 23:57:37.778" level="INFO">DELETE Request : url=https://reqres.in/api/users/2 
+ path_url=/api/users/2 
+ headers={'User-Agent': 'python-requests/2.23.0', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'Content-Length': '0'} 
+ body=None 
+ </msg>
+<msg timestamp="20200516 23:57:37.778" level="INFO">DELETE Response : url=https://reqres.in/api/users/2 
+ status=204, reason=No Content 
+ body=None 
+ </msg>
+<msg timestamp="20200516 23:57:37.779" level="INFO">c:\python38\lib\site-packages\urllib3\connectionpool.py:997: InsecureRequestWarning: Unverified HTTPS request is being made to host 'reqres.in'. Adding certificate verification is strongly advised. See: https://urllib3.readthedocs.io/en/latest/advanced-usage.html#ssl-warnings
+  warnings.warn(</msg>
+<msg timestamp="20200516 23:57:37.785" level="INFO">${resp} = &lt;Response [204]&gt;</msg>
+<status status="PASS" starttime="20200516 23:57:37.126" endtime="20200516 23:57:37.785"></status>
+</kw>
+<msg timestamp="20200516 23:57:37.786" level="INFO">${resp} = &lt;Response [204]&gt;</msg>
+<status status="PASS" starttime="20200516 23:57:37.121" endtime="20200516 23:57:37.787"></status>
+</kw>
+<kw name="Status Should Be" library="RequestsLibrary">
+<doc>Fails if response status code is different than the expected.</doc>
+<arguments>
+<arg>204</arg>
+<arg>${resp}</arg>
+</arguments>
+<status status="PASS" starttime="20200516 23:57:37.789" endtime="20200516 23:57:37.790"></status>
+</kw>
+<status status="PASS" starttime="20200516 23:57:37.119" endtime="20200516 23:57:37.792" critical="yes"></status>
+</test>
+<doc>Reqres API / Users</doc>
+<status status="PASS" starttime="20200516 23:57:34.130" endtime="20200516 23:57:37.800"></status>
+</suite>
+<status status="PASS" starttime="20200516 23:57:32.478" endtime="20200516 23:57:37.819"></status>
+</suite>
+<statistics>
+<total>
+<stat pass="9" fail="0">Critical Tests</stat>
+<stat pass="9" fail="0">All Tests</stat>
+</total>
+<tag>
+</tag>
+<suite>
+<stat pass="9" fail="0" id="s1" name="Tests">Tests</stat>
+<stat pass="3" fail="0" id="s1-s1" name="Request Resource">Tests.Request Resource</stat>
+<stat pass="6" fail="0" id="s1-s2" name="Request Users">Tests.Request Users</stat>
+</suite>
+</statistics>
+<errors>
+</errors>
+</robot>

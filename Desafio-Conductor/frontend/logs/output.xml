@@ -1,0 +1,2197 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 3.1.2 (Python 3.8.2 on win32)" generated="20200517 11:52:36.424" rpa="false">
+<suite id="s1" name="Tests" source="C:\Projects\Desafio Conductor\frontend\tests">
+<suite id="s1-s1" name="Cadastro Cliente" source="C:\Projects\Desafio Conductor\frontend\tests\cadastro_cliente.robot">
+<kw name="Login Session" library="BasePage" type="setup">
+<kw name="Open Session" library="BasePage">
+<kw name="Open Browser" library="SeleniumLibrary">
+<doc>Opens a new browser instance to the optional ``url``.</doc>
+<arguments>
+<arg>${base_url}/login</arg>
+<arg>chrome</arg>
+<arg>options=add_experimental_option('excludeSwitches', ['enable-logging'])</arg>
+</arguments>
+<msg timestamp="20200517 11:52:36.845" level="INFO">Opening browser 'chrome' to base url 'http://provaqa.marketpay.com.br:9083/desafioqa/login'.</msg>
+<status status="PASS" starttime="20200517 11:52:36.845" endtime="20200517 11:52:43.844"></status>
+</kw>
+<kw name="Set Selenium Implicit Wait" library="SeleniumLibrary">
+<doc>Sets the implicit wait value used by Selenium.</doc>
+<arguments>
+<arg>5</arg>
+</arguments>
+<status status="PASS" starttime="20200517 11:52:43.845" endtime="20200517 11:52:43.848"></status>
+</kw>
+<kw name="Set Window Size" library="SeleniumLibrary">
+<doc>Sets current windows size to given ``width`` and ``height``.</doc>
+<arguments>
+<arg>1280</arg>
+<arg>800</arg>
+</arguments>
+<status status="PASS" starttime="20200517 11:52:43.848" endtime="20200517 11:52:48.014"></status>
+</kw>
+<status status="PASS" starttime="20200517 11:52:36.845" endtime="20200517 11:52:48.014"></status>
+</kw>
+<kw name="Login With" library="LoginPage">
+<arguments>
+<arg>admin</arg>
+<arg>admin</arg>
+</arguments>
+<kw name="Input Text" library="SeleniumLibrary">
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<arguments>
+<arg>name:username</arg>
+<arg>${user}</arg>
+</arguments>
+<msg timestamp="20200517 11:52:48.016" level="INFO">Typing text 'admin' into text field 'name:username'.</msg>
+<status status="PASS" starttime="20200517 11:52:48.016" endtime="20200517 11:52:48.214"></status>
+</kw>
+<kw name="Input Text" library="SeleniumLibrary">
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<arguments>
+<arg>name:password</arg>
+<arg>${pass}</arg>
+</arguments>
+<msg timestamp="20200517 11:52:48.214" level="INFO">Typing text 'admin' into text field 'name:password'.</msg>
+<status status="PASS" starttime="20200517 11:52:48.214" endtime="20200517 11:52:48.427"></status>
+</kw>
+<kw name="Click Element" library="SeleniumLibrary">
+<doc>Click the element identified by ``locator``.</doc>
+<arguments>
+<arg>class:btn</arg>
+</arguments>
+<msg timestamp="20200517 11:52:48.428" level="INFO">Clicking element 'class:btn'.</msg>
+<status status="PASS" starttime="20200517 11:52:48.428" endtime="20200517 11:52:50.200"></status>
+</kw>
+<status status="PASS" starttime="20200517 11:52:48.015" endtime="20200517 11:52:50.201"></status>
+</kw>
+<status status="PASS" starttime="20200517 11:52:36.845" endtime="20200517 11:52:50.201"></status>
+</kw>
+<test id="s1-s1-t1" name="Cadastro de cliente com sucesso">
+<kw name="Dado que eu tenha um novo cliente" library="actions">
+<arguments>
+<arg>cliente01.json</arg>
+</arguments>
+<kw name="Get Client Json" library="actions">
+<arguments>
+<arg>${file}</arg>
+</arguments>
+<assign>
+<var>${json}</var>
+</assign>
+<kw name="Get File" library="OperatingSystem">
+<doc>Returns the contents of a specified file.</doc>
+<arguments>
+<arg>resources/fixtures/${file}</arg>
+</arguments>
+<assign>
+<var>${file}</var>
+</assign>
+<msg timestamp="20200517 11:52:50.206" level="INFO" html="yes">Getting file '&lt;a href="file://C:\Projects\Desafio Conductor\frontend\resources\fixtures\cliente01.json"&gt;C:\Projects\Desafio Conductor\frontend\resources\fixtures\cliente01.json&lt;/a&gt;'.</msg>
+<msg timestamp="20200517 11:52:50.207" level="INFO">${file} = {
+    "nome": "Wellington Lemos",
+    "cpf": "111.222.333-44",
+    "ativo": "Ativo",
+    "saldo": "100.0"
+}</msg>
+<status status="PASS" starttime="20200517 11:52:50.205" endtime="20200517 11:52:50.207"></status>
+</kw>
+<kw name="Evaluate" library="BuiltIn">
+<doc>Evaluates the given expression in Python and returns the results.</doc>
+<arguments>
+<arg>json.loads($file)</arg>
+<arg>json</arg>
+</arguments>
+<assign>
+<var>${json}</var>
+</assign>
+<msg timestamp="20200517 11:52:50.208" level="INFO">${json} = {'nome': 'Wellington Lemos', 'cpf': '111.222.333-44', 'ativo': 'Ativo', 'saldo': '100.0'}</msg>
+<status status="PASS" starttime="20200517 11:52:50.207" endtime="20200517 11:52:50.208"></status>
+</kw>
+<msg timestamp="20200517 11:52:50.209" level="INFO">${json} = {'nome': 'Wellington Lemos', 'cpf': '111.222.333-44', 'ativo': 'Ativo', 'saldo': '100.0'}</msg>
+<status status="PASS" starttime="20200517 11:52:50.205" endtime="20200517 11:52:50.209"></status>
+</kw>
+<kw name="Set Test Variable" library="BuiltIn">
+<doc>Makes a variable available everywhere within the scope of the current test.</doc>
+<arguments>
+<arg>${json}</arg>
+</arguments>
+<msg timestamp="20200517 11:52:50.209" level="INFO">${json} = {'nome': 'Wellington Lemos', 'cpf': '111.222.333-44', 'ativo': 'Ativo', 'saldo': '100.0'}</msg>
+<status status="PASS" starttime="20200517 11:52:50.209" endtime="20200517 11:52:50.210"></status>
+</kw>
+<status status="PASS" starttime="20200517 11:52:50.204" endtime="20200517 11:52:50.210"></status>
+</kw>
+<kw name="Quando eu faço o cadastro desse cliente" library="actions">
+<kw name="Go To Client Form" library="CadClientePage">
+<kw name="Click Element" library="SeleniumLibrary">
+<doc>Click the element identified by ``locator``.</doc>
+<arguments>
+<arg>xpath://span[text()='QA']</arg>
+</arguments>
+<msg timestamp="20200517 11:52:50.210" level="INFO">Clicking element 'xpath://span[text()='QA']'.</msg>
+<status status="PASS" starttime="20200517 11:52:50.210" endtime="20200517 11:52:50.328"></status>
+</kw>
+<kw name="Click Element" library="SeleniumLibrary">
+<doc>Click the element identified by ``locator``.</doc>
+<arguments>
+<arg>xpath://span[text()='Clientes']</arg>
+</arguments>
+<msg timestamp="20200517 11:52:50.329" level="INFO">Clicking element 'xpath://span[text()='Clientes']'.</msg>
+<status status="PASS" starttime="20200517 11:52:50.328" endtime="20200517 11:52:50.455"></status>
+</kw>
+<kw name="Click Element" library="SeleniumLibrary">
+<doc>Click the element identified by ``locator``.</doc>
+<arguments>
+<arg>xpath://li/a[@title='Incluir']/span[text()='Incluir']</arg>
+</arguments>
+<msg timestamp="20200517 11:52:50.456" level="INFO">Clicking element 'xpath://li/a[@title='Incluir']/span[text()='Incluir']'.</msg>
+<status status="PASS" starttime="20200517 11:52:50.455" endtime="20200517 11:52:51.446"></status>
+</kw>
+<kw name="Wait Until Element Is Visible" library="SeleniumLibrary">
+<doc>Waits until the element ``locator`` is visible.</doc>
+<arguments>
+<arg>xpath://label[text()='Incluir Cliente']</arg>
+</arguments>
+<status status="PASS" starttime="20200517 11:52:51.447" endtime="20200517 11:52:51.510"></status>
+</kw>
+<status status="PASS" starttime="20200517 11:52:50.210" endtime="20200517 11:52:51.511"></status>
+</kw>
+<kw name="Create new Client" library="CadClientePage">
+<arguments>
+<arg>${json}</arg>
+</arguments>
+<kw name="Input Text" library="SeleniumLibrary">
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<arguments>
+<arg>css:input[name=nome]</arg>
+<arg>${json['nome']}</arg>
+</arguments>
+<msg timestamp="20200517 11:52:51.512" level="INFO">Typing text 'Wellington Lemos' into text field 'css:input[name=nome]'.</msg>
+<status status="PASS" starttime="20200517 11:52:51.511" endtime="20200517 11:52:51.945"></status>
+</kw>
+<kw name="Input Text" library="SeleniumLibrary">
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<arguments>
+<arg>css:input[name=cpf]</arg>
+<arg>${json['cpf']}</arg>
+</arguments>
+<msg timestamp="20200517 11:52:51.946" level="INFO">Typing text '111.222.333-44' into text field 'css:input[name=cpf]'.</msg>
+<status status="PASS" starttime="20200517 11:52:51.946" endtime="20200517 11:52:52.160"></status>
+</kw>
+<kw name="Click Element" library="SeleniumLibrary">
+<doc>Click the element identified by ``locator``.</doc>
+<arguments>
+<arg>id:status</arg>
+</arguments>
+<msg timestamp="20200517 11:52:52.161" level="INFO">Clicking element 'id:status'.</msg>
+<status status="PASS" starttime="20200517 11:52:52.160" endtime="20200517 11:52:52.311"></status>
+</kw>
+<kw name="Click Element" library="SeleniumLibrary">
+<doc>Click the element identified by ``locator``.</doc>
+<arguments>
+<arg>xpath://option[text()='${json['ativo']}']</arg>
+</arguments>
+<msg timestamp="20200517 11:52:52.312" level="INFO">Clicking element 'xpath://option[text()='Ativo']'.</msg>
+<status status="PASS" starttime="20200517 11:52:52.311" endtime="20200517 11:52:52.388"></status>
+</kw>
+<kw name="Input Text" library="SeleniumLibrary">
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<arguments>
+<arg>css:input[name=saldoCliente]</arg>
+<arg>${json['saldo']}</arg>
+</arguments>
+<msg timestamp="20200517 11:52:52.389" level="INFO">Typing text '100.0' into text field 'css:input[name=saldoCliente]'.</msg>
+<status status="PASS" starttime="20200517 11:52:52.389" endtime="20200517 11:52:52.555"></status>
+</kw>
+<kw name="Click Element" library="SeleniumLibrary">
+<doc>Click the element identified by ``locator``.</doc>
+<arguments>
+<arg>id:botaoSalvar</arg>
+</arguments>
+<msg timestamp="20200517 11:52:52.555" level="INFO">Clicking element 'id:botaoSalvar'.</msg>
+<status status="PASS" starttime="20200517 11:52:52.555" endtime="20200517 11:52:52.695"></status>
+</kw>
+<status status="PASS" starttime="20200517 11:52:51.511" endtime="20200517 11:52:52.696"></status>
+</kw>
+<status status="PASS" starttime="20200517 11:52:50.210" endtime="20200517 11:52:52.697"></status>
+</kw>
+<kw name="Então devo ver a mensagem &quot;Cliente salvo com sucesso&quot;" library="actions">
+<kw name="Wait Until Element Contains" library="SeleniumLibrary">
+<doc>Waits until the element ``locator`` contains ``text``.</doc>
+<arguments>
+<arg>${USER_SAVE}</arg>
+<arg>${messenger}</arg>
+</arguments>
+<status status="PASS" starttime="20200517 11:52:52.700" endtime="20200517 11:52:53.826"></status>
+</kw>
+<status status="PASS" starttime="20200517 11:52:52.699" endtime="20200517 11:52:53.827"></status>
+</kw>
+<status status="PASS" starttime="20200517 11:52:50.201" endtime="20200517 11:52:53.828" critical="yes"></status>
+</test>
+<test id="s1-s1-t2" name="Cadastro de cliente sem nome">
+<kw name="Dado que eu tenha um novo cliente" library="actions">
+<arguments>
+<arg>cliente02.json</arg>
+</arguments>
+<kw name="Get Client Json" library="actions">
+<arguments>
+<arg>${file}</arg>
+</arguments>
+<assign>
+<var>${json}</var>
+</assign>
+<kw name="Get File" library="OperatingSystem">
+<doc>Returns the contents of a specified file.</doc>
+<arguments>
+<arg>resources/fixtures/${file}</arg>
+</arguments>
+<assign>
+<var>${file}</var>
+</assign>
+<msg timestamp="20200517 11:52:53.836" level="INFO" html="yes">Getting file '&lt;a href="file://C:\Projects\Desafio Conductor\frontend\resources\fixtures\cliente02.json"&gt;C:\Projects\Desafio Conductor\frontend\resources\fixtures\cliente02.json&lt;/a&gt;'.</msg>
+<msg timestamp="20200517 11:52:53.837" level="INFO">${file} = {
+    "nome": "",
+    "cpf": "555.444.333-22",
+    "ativo": "Ativo",
+    "saldo": "20.0"
+}</msg>
+<status status="PASS" starttime="20200517 11:52:53.836" endtime="20200517 11:52:53.837"></status>
+</kw>
+<kw name="Evaluate" library="BuiltIn">
+<doc>Evaluates the given expression in Python and returns the results.</doc>
+<arguments>
+<arg>json.loads($file)</arg>
+<arg>json</arg>
+</arguments>
+<assign>
+<var>${json}</var>
+</assign>
+<msg timestamp="20200517 11:52:53.839" level="INFO">${json} = {'nome': '', 'cpf': '555.444.333-22', 'ativo': 'Ativo', 'saldo': '20.0'}</msg>
+<status status="PASS" starttime="20200517 11:52:53.837" endtime="20200517 11:52:53.839"></status>
+</kw>
+<msg timestamp="20200517 11:52:53.839" level="INFO">${json} = {'nome': '', 'cpf': '555.444.333-22', 'ativo': 'Ativo', 'saldo': '20.0'}</msg>
+<status status="PASS" starttime="20200517 11:52:53.835" endtime="20200517 11:52:53.839"></status>
+</kw>
+<kw name="Set Test Variable" library="BuiltIn">
+<doc>Makes a variable available everywhere within the scope of the current test.</doc>
+<arguments>
+<arg>${json}</arg>
+</arguments>
+<msg timestamp="20200517 11:52:53.840" level="INFO">${json} = {'nome': '', 'cpf': '555.444.333-22', 'ativo': 'Ativo', 'saldo': '20.0'}</msg>
+<status status="PASS" starttime="20200517 11:52:53.839" endtime="20200517 11:52:53.840"></status>
+</kw>
+<status status="PASS" starttime="20200517 11:52:53.832" endtime="20200517 11:52:53.840"></status>
+</kw>
+<kw name="Quando eu faço o cadastro desse cliente" library="actions">
+<kw name="Go To Client Form" library="CadClientePage">
+<kw name="Click Element" library="SeleniumLibrary">
+<doc>Click the element identified by ``locator``.</doc>
+<arguments>
+<arg>xpath://span[text()='QA']</arg>
+</arguments>
+<msg timestamp="20200517 11:52:53.842" level="INFO">Clicking element 'xpath://span[text()='QA']'.</msg>
+<status status="PASS" starttime="20200517 11:52:53.842" endtime="20200517 11:52:53.943"></status>
+</kw>
+<kw name="Click Element" library="SeleniumLibrary">
+<doc>Click the element identified by ``locator``.</doc>
+<arguments>
+<arg>xpath://span[text()='Clientes']</arg>
+</arguments>
+<msg timestamp="20200517 11:52:53.944" level="INFO">Clicking element 'xpath://span[text()='Clientes']'.</msg>
+<status status="PASS" starttime="20200517 11:52:53.943" endtime="20200517 11:52:54.060"></status>
+</kw>
+<kw name="Click Element" library="SeleniumLibrary">
+<doc>Click the element identified by ``locator``.</doc>
+<arguments>
+<arg>xpath://li/a[@title='Incluir']/span[text()='Incluir']</arg>
+</arguments>
+<msg timestamp="20200517 11:52:54.062" level="INFO">Clicking element 'xpath://li/a[@title='Incluir']/span[text()='Incluir']'.</msg>
+<status status="PASS" starttime="20200517 11:52:54.061" endtime="20200517 11:52:55.022"></status>
+</kw>
+<kw name="Wait Until Element Is Visible" library="SeleniumLibrary">
+<doc>Waits until the element ``locator`` is visible.</doc>
+<arguments>
+<arg>xpath://label[text()='Incluir Cliente']</arg>
+</arguments>
+<status status="PASS" starttime="20200517 11:52:55.022" endtime="20200517 11:52:55.078"></status>
+</kw>
+<status status="PASS" starttime="20200517 11:52:53.841" endtime="20200517 11:52:55.079"></status>
+</kw>
+<kw name="Create new Client" library="CadClientePage">
+<arguments>
+<arg>${json}</arg>
+</arguments>
+<kw name="Input Text" library="SeleniumLibrary">
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<arguments>
+<arg>css:input[name=nome]</arg>
+<arg>${json['nome']}</arg>
+</arguments>
+<msg timestamp="20200517 11:52:55.081" level="INFO">Typing text '' into text field 'css:input[name=nome]'.</msg>
+<status status="PASS" starttime="20200517 11:52:55.080" endtime="20200517 11:52:55.199"></status>
+</kw>
+<kw name="Input Text" library="SeleniumLibrary">
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<arguments>
+<arg>css:input[name=cpf]</arg>
+<arg>${json['cpf']}</arg>
+</arguments>
+<msg timestamp="20200517 11:52:55.201" level="INFO">Typing text '555.444.333-22' into text field 'css:input[name=cpf]'.</msg>
+<status status="PASS" starttime="20200517 11:52:55.201" endtime="20200517 11:52:55.424"></status>
+</kw>
+<kw name="Click Element" library="SeleniumLibrary">
+<doc>Click the element identified by ``locator``.</doc>
+<arguments>
+<arg>id:status</arg>
+</arguments>
+<msg timestamp="20200517 11:52:55.425" level="INFO">Clicking element 'id:status'.</msg>
+<status status="PASS" starttime="20200517 11:52:55.425" endtime="20200517 11:52:55.584"></status>
+</kw>
+<kw name="Click Element" library="SeleniumLibrary">
+<doc>Click the element identified by ``locator``.</doc>
+<arguments>
+<arg>xpath://option[text()='${json['ativo']}']</arg>
+</arguments>
+<msg timestamp="20200517 11:52:55.585" level="INFO">Clicking element 'xpath://option[text()='Ativo']'.</msg>
+<status status="PASS" starttime="20200517 11:52:55.584" endtime="20200517 11:52:55.662"></status>
+</kw>
+<kw name="Input Text" library="SeleniumLibrary">
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<arguments>
+<arg>css:input[name=saldoCliente]</arg>
+<arg>${json['saldo']}</arg>
+</arguments>
+<msg timestamp="20200517 11:52:55.663" level="INFO">Typing text '20.0' into text field 'css:input[name=saldoCliente]'.</msg>
+<status status="PASS" starttime="20200517 11:52:55.662" endtime="20200517 11:52:55.817"></status>
+</kw>
+<kw name="Click Element" library="SeleniumLibrary">
+<doc>Click the element identified by ``locator``.</doc>
+<arguments>
+<arg>id:botaoSalvar</arg>
+</arguments>
+<msg timestamp="20200517 11:52:55.818" level="INFO">Clicking element 'id:botaoSalvar'.</msg>
+<status status="PASS" starttime="20200517 11:52:55.818" endtime="20200517 11:52:55.933"></status>
+</kw>
+<status status="PASS" starttime="20200517 11:52:55.079" endtime="20200517 11:52:55.933"></status>
+</kw>
+<status status="PASS" starttime="20200517 11:52:53.841" endtime="20200517 11:52:55.934"></status>
+</kw>
+<kw name="Então devo ver a mensagem de erro no nome &quot;Campo Obrigatório&quot;" library="actions">
+<kw name="Wait Until Element Contains" library="SeleniumLibrary">
+<doc>Waits until the element ``locator`` contains ``text``.</doc>
+<arguments>
+<arg>${ALERT_ERROR_NAME}</arg>
+<arg>${messenger_error}</arg>
+</arguments>
+<status status="PASS" starttime="20200517 11:52:55.936" endtime="20200517 11:52:55.980"></status>
+</kw>
+<status status="PASS" starttime="20200517 11:52:55.935" endtime="20200517 11:52:55.981"></status>
+</kw>
+<status status="PASS" starttime="20200517 11:52:53.830" endtime="20200517 11:52:55.983" critical="yes"></status>
+</test>
+<test id="s1-s1-t3" name="Cadastro de cliente sem cpf">
+<kw name="Dado que eu tenha um novo cliente" library="actions">
+<arguments>
+<arg>cliente03.json</arg>
+</arguments>
+<kw name="Get Client Json" library="actions">
+<arguments>
+<arg>${file}</arg>
+</arguments>
+<assign>
+<var>${json}</var>
+</assign>
+<kw name="Get File" library="OperatingSystem">
+<doc>Returns the contents of a specified file.</doc>
+<arguments>
+<arg>resources/fixtures/${file}</arg>
+</arguments>
+<assign>
+<var>${file}</var>
+</assign>
+<msg timestamp="20200517 11:52:55.989" level="INFO" html="yes">Getting file '&lt;a href="file://C:\Projects\Desafio Conductor\frontend\resources\fixtures\cliente03.json"&gt;C:\Projects\Desafio Conductor\frontend\resources\fixtures\cliente03.json&lt;/a&gt;'.</msg>
+<msg timestamp="20200517 11:52:55.990" level="INFO">${file} = {
+    "nome": "Luiz Melo",
+    "cpf": "",
+    "ativo": "Ativo",
+    "saldo": "10.0"
+}</msg>
+<status status="PASS" starttime="20200517 11:52:55.989" endtime="20200517 11:52:55.990"></status>
+</kw>
+<kw name="Evaluate" library="BuiltIn">
+<doc>Evaluates the given expression in Python and returns the results.</doc>
+<arguments>
+<arg>json.loads($file)</arg>
+<arg>json</arg>
+</arguments>
+<assign>
+<var>${json}</var>
+</assign>
+<msg timestamp="20200517 11:52:55.992" level="INFO">${json} = {'nome': 'Luiz Melo', 'cpf': '', 'ativo': 'Ativo', 'saldo': '10.0'}</msg>
+<status status="PASS" starttime="20200517 11:52:55.990" endtime="20200517 11:52:55.992"></status>
+</kw>
+<msg timestamp="20200517 11:52:55.992" level="INFO">${json} = {'nome': 'Luiz Melo', 'cpf': '', 'ativo': 'Ativo', 'saldo': '10.0'}</msg>
+<status status="PASS" starttime="20200517 11:52:55.988" endtime="20200517 11:52:55.993"></status>
+</kw>
+<kw name="Set Test Variable" library="BuiltIn">
+<doc>Makes a variable available everywhere within the scope of the current test.</doc>
+<arguments>
+<arg>${json}</arg>
+</arguments>
+<msg timestamp="20200517 11:52:55.993" level="INFO">${json} = {'nome': 'Luiz Melo', 'cpf': '', 'ativo': 'Ativo', 'saldo': '10.0'}</msg>
+<status status="PASS" starttime="20200517 11:52:55.993" endtime="20200517 11:52:55.993"></status>
+</kw>
+<status status="PASS" starttime="20200517 11:52:55.988" endtime="20200517 11:52:55.994"></status>
+</kw>
+<kw name="Quando eu faço o cadastro desse cliente" library="actions">
+<kw name="Go To Client Form" library="CadClientePage">
+<kw name="Click Element" library="SeleniumLibrary">
+<doc>Click the element identified by ``locator``.</doc>
+<arguments>
+<arg>xpath://span[text()='QA']</arg>
+</arguments>
+<msg timestamp="20200517 11:52:55.996" level="INFO">Clicking element 'xpath://span[text()='QA']'.</msg>
+<status status="PASS" starttime="20200517 11:52:55.996" endtime="20200517 11:52:56.113"></status>
+</kw>
+<kw name="Click Element" library="SeleniumLibrary">
+<doc>Click the element identified by ``locator``.</doc>
+<arguments>
+<arg>xpath://span[text()='Clientes']</arg>
+</arguments>
+<msg timestamp="20200517 11:52:56.114" level="INFO">Clicking element 'xpath://span[text()='Clientes']'.</msg>
+<status status="PASS" starttime="20200517 11:52:56.113" endtime="20200517 11:52:56.226"></status>
+</kw>
+<kw name="Click Element" library="SeleniumLibrary">
+<doc>Click the element identified by ``locator``.</doc>
+<arguments>
+<arg>xpath://li/a[@title='Incluir']/span[text()='Incluir']</arg>
+</arguments>
+<msg timestamp="20200517 11:52:56.228" level="INFO">Clicking element 'xpath://li/a[@title='Incluir']/span[text()='Incluir']'.</msg>
+<status status="PASS" starttime="20200517 11:52:56.227" endtime="20200517 11:52:57.138"></status>
+</kw>
+<kw name="Wait Until Element Is Visible" library="SeleniumLibrary">
+<doc>Waits until the element ``locator`` is visible.</doc>
+<arguments>
+<arg>xpath://label[text()='Incluir Cliente']</arg>
+</arguments>
+<status status="PASS" starttime="20200517 11:52:57.138" endtime="20200517 11:52:57.178"></status>
+</kw>
+<status status="PASS" starttime="20200517 11:52:55.995" endtime="20200517 11:52:57.178"></status>
+</kw>
+<kw name="Create new Client" library="CadClientePage">
+<arguments>
+<arg>${json}</arg>
+</arguments>
+<kw name="Input Text" library="SeleniumLibrary">
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<arguments>
+<arg>css:input[name=nome]</arg>
+<arg>${json['nome']}</arg>
+</arguments>
+<msg timestamp="20200517 11:52:57.179" level="INFO">Typing text 'Luiz Melo' into text field 'css:input[name=nome]'.</msg>
+<status status="PASS" starttime="20200517 11:52:57.179" endtime="20200517 11:52:57.776"></status>
+</kw>
+<kw name="Input Text" library="SeleniumLibrary">
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<arguments>
+<arg>css:input[name=cpf]</arg>
+<arg>${json['cpf']}</arg>
+</arguments>
+<msg timestamp="20200517 11:52:57.777" level="INFO">Typing text '' into text field 'css:input[name=cpf]'.</msg>
+<status status="PASS" starttime="20200517 11:52:57.776" endtime="20200517 11:52:57.886"></status>
+</kw>
+<kw name="Click Element" library="SeleniumLibrary">
+<doc>Click the element identified by ``locator``.</doc>
+<arguments>
+<arg>id:status</arg>
+</arguments>
+<msg timestamp="20200517 11:52:57.888" level="INFO">Clicking element 'id:status'.</msg>
+<status status="PASS" starttime="20200517 11:52:57.887" endtime="20200517 11:52:58.027"></status>
+</kw>
+<kw name="Click Element" library="SeleniumLibrary">
+<doc>Click the element identified by ``locator``.</doc>
+<arguments>
+<arg>xpath://option[text()='${json['ativo']}']</arg>
+</arguments>
+<msg timestamp="20200517 11:52:58.028" level="INFO">Clicking element 'xpath://option[text()='Ativo']'.</msg>
+<status status="PASS" starttime="20200517 11:52:58.027" endtime="20200517 11:52:58.090"></status>
+</kw>
+<kw name="Input Text" library="SeleniumLibrary">
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<arguments>
+<arg>css:input[name=saldoCliente]</arg>
+<arg>${json['saldo']}</arg>
+</arguments>
+<msg timestamp="20200517 11:52:58.091" level="INFO">Typing text '10.0' into text field 'css:input[name=saldoCliente]'.</msg>
+<status status="PASS" starttime="20200517 11:52:58.090" endtime="20200517 11:52:58.255"></status>
+</kw>
+<kw name="Click Element" library="SeleniumLibrary">
+<doc>Click the element identified by ``locator``.</doc>
+<arguments>
+<arg>id:botaoSalvar</arg>
+</arguments>
+<msg timestamp="20200517 11:52:58.255" level="INFO">Clicking element 'id:botaoSalvar'.</msg>
+<status status="PASS" starttime="20200517 11:52:58.255" endtime="20200517 11:52:58.364"></status>
+</kw>
+<status status="PASS" starttime="20200517 11:52:57.178" endtime="20200517 11:52:58.364"></status>
+</kw>
+<status status="PASS" starttime="20200517 11:52:55.994" endtime="20200517 11:52:58.364"></status>
+</kw>
+<kw name="Então devo ver a mensagem de erro no cpf &quot;Campo Obrigatório&quot;" library="actions">
+<kw name="Wait Until Element Contains" library="SeleniumLibrary">
+<doc>Waits until the element ``locator`` contains ``text``.</doc>
+<arguments>
+<arg>${ALERT_ERROR_CPF}</arg>
+<arg>${messenger_error}</arg>
+</arguments>
+<status status="PASS" starttime="20200517 11:52:58.367" endtime="20200517 11:52:58.412"></status>
+</kw>
+<status status="PASS" starttime="20200517 11:52:58.366" endtime="20200517 11:52:58.412"></status>
+</kw>
+<status status="PASS" starttime="20200517 11:52:55.986" endtime="20200517 11:52:58.413" critical="yes"></status>
+</test>
+<kw name="Close Session" library="BasePage" type="teardown">
+<kw name="Capture Page Screenshot" library="SeleniumLibrary">
+<doc>Takes a screenshot of the current page and embeds it into a log file.</doc>
+<msg timestamp="20200517 11:52:58.810" level="INFO" html="yes">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="selenium-screenshot-230.png"&gt;&lt;img src="selenium-screenshot-230.png" width="800px"&gt;&lt;/a&gt;</msg>
+<status status="PASS" starttime="20200517 11:52:58.417" endtime="20200517 11:52:58.810"></status>
+</kw>
+<kw name="Close Browser" library="SeleniumLibrary">
+<doc>Closes the current browser.</doc>
+<status status="PASS" starttime="20200517 11:52:58.810" endtime="20200517 11:53:01.126"></status>
+</kw>
+<status status="PASS" starttime="20200517 11:52:58.416" endtime="20200517 11:53:01.127"></status>
+</kw>
+<doc>Cadastro de Cliente
+Sendo um administrador da página
+Quero cadastrar clientes
+Para que eu possa realizar transações</doc>
+<status status="PASS" starttime="20200517 11:52:36.470" endtime="20200517 11:53:01.127"></status>
+</suite>
+<suite id="s1-s2" name="Consulta Cliente" source="C:\Projects\Desafio Conductor\frontend\tests\consulta_cliente.robot">
+<kw name="Login Session" library="BasePage" type="setup">
+<kw name="Open Session" library="BasePage">
+<kw name="Open Browser" library="SeleniumLibrary">
+<doc>Opens a new browser instance to the optional ``url``.</doc>
+<arguments>
+<arg>${base_url}/login</arg>
+<arg>chrome</arg>
+<arg>options=add_experimental_option('excludeSwitches', ['enable-logging'])</arg>
+</arguments>
+<msg timestamp="20200517 11:53:01.178" level="INFO">Opening browser 'chrome' to base url 'http://provaqa.marketpay.com.br:9083/desafioqa/login'.</msg>
+<status status="PASS" starttime="20200517 11:53:01.178" endtime="20200517 11:53:08.055"></status>
+</kw>
+<kw name="Set Selenium Implicit Wait" library="SeleniumLibrary">
+<doc>Sets the implicit wait value used by Selenium.</doc>
+<arguments>
+<arg>5</arg>
+</arguments>
+<status status="PASS" starttime="20200517 11:53:08.055" endtime="20200517 11:53:08.058"></status>
+</kw>
+<kw name="Set Window Size" library="SeleniumLibrary">
+<doc>Sets current windows size to given ``width`` and ``height``.</doc>
+<arguments>
+<arg>1280</arg>
+<arg>800</arg>
+</arguments>
+<status status="PASS" starttime="20200517 11:53:08.058" endtime="20200517 11:53:12.229"></status>
+</kw>
+<status status="PASS" starttime="20200517 11:53:01.178" endtime="20200517 11:53:12.229"></status>
+</kw>
+<kw name="Login With" library="LoginPage">
+<arguments>
+<arg>admin</arg>
+<arg>admin</arg>
+</arguments>
+<kw name="Input Text" library="SeleniumLibrary">
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<arguments>
+<arg>name:username</arg>
+<arg>${user}</arg>
+</arguments>
+<msg timestamp="20200517 11:53:12.231" level="INFO">Typing text 'admin' into text field 'name:username'.</msg>
+<status status="PASS" starttime="20200517 11:53:12.231" endtime="20200517 11:53:12.415"></status>
+</kw>
+<kw name="Input Text" library="SeleniumLibrary">
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<arguments>
+<arg>name:password</arg>
+<arg>${pass}</arg>
+</arguments>
+<msg timestamp="20200517 11:53:12.415" level="INFO">Typing text 'admin' into text field 'name:password'.</msg>
+<status status="PASS" starttime="20200517 11:53:12.415" endtime="20200517 11:53:12.610"></status>
+</kw>
+<kw name="Click Element" library="SeleniumLibrary">
+<doc>Click the element identified by ``locator``.</doc>
+<arguments>
+<arg>class:btn</arg>
+</arguments>
+<msg timestamp="20200517 11:53:12.611" level="INFO">Clicking element 'class:btn'.</msg>
+<status status="PASS" starttime="20200517 11:53:12.610" endtime="20200517 11:53:14.372"></status>
+</kw>
+<status status="PASS" starttime="20200517 11:53:12.230" endtime="20200517 11:53:14.372"></status>
+</kw>
+<status status="PASS" starttime="20200517 11:53:01.178" endtime="20200517 11:53:14.373"></status>
+</kw>
+<test id="s1-s2-t1" name="Consulta cliente pelo nome">
+<kw name="Dado que eu tenha um cliente &quot;cliente04.json&quot; cadastrado" library="actions">
+<kw name="Get Client Json" library="actions">
+<arguments>
+<arg>${file}</arg>
+</arguments>
+<assign>
+<var>${json}</var>
+</assign>
+<kw name="Get File" library="OperatingSystem">
+<doc>Returns the contents of a specified file.</doc>
+<arguments>
+<arg>resources/fixtures/${file}</arg>
+</arguments>
+<assign>
+<var>${file}</var>
+</assign>
+<msg timestamp="20200517 11:53:14.376" level="INFO" html="yes">Getting file '&lt;a href="file://C:\Projects\Desafio Conductor\frontend\resources\fixtures\cliente04.json"&gt;C:\Projects\Desafio Conductor\frontend\resources\fixtures\cliente04.json&lt;/a&gt;'.</msg>
+<msg timestamp="20200517 11:53:14.377" level="INFO">${file} = {
+    "nome": "Luiza Niely",
+    "cpf": "123.321.123-32",
+    "ativo": "Ativo",
+    "saldo": "200.0"
+}</msg>
+<status status="PASS" starttime="20200517 11:53:14.376" endtime="20200517 11:53:14.377"></status>
+</kw>
+<kw name="Evaluate" library="BuiltIn">
+<doc>Evaluates the given expression in Python and returns the results.</doc>
+<arguments>
+<arg>json.loads($file)</arg>
+<arg>json</arg>
+</arguments>
+<assign>
+<var>${json}</var>
+</assign>
+<msg timestamp="20200517 11:53:14.379" level="INFO">${json} = {'nome': 'Luiza Niely', 'cpf': '123.321.123-32', 'ativo': 'Ativo', 'saldo': '200.0'}</msg>
+<status status="PASS" starttime="20200517 11:53:14.377" endtime="20200517 11:53:14.379"></status>
+</kw>
+<msg timestamp="20200517 11:53:14.379" level="INFO">${json} = {'nome': 'Luiza Niely', 'cpf': '123.321.123-32', 'ativo': 'Ativo', 'saldo': '200.0'}</msg>
+<status status="PASS" starttime="20200517 11:53:14.375" endtime="20200517 11:53:14.379"></status>
+</kw>
+<kw name="Go To Client Form" library="CadClientePage">
+<kw name="Click Element" library="SeleniumLibrary">
+<doc>Click the element identified by ``locator``.</doc>
+<arguments>
+<arg>xpath://span[text()='QA']</arg>
+</arguments>
+<msg timestamp="20200517 11:53:14.380" level="INFO">Clicking element 'xpath://span[text()='QA']'.</msg>
+<status status="PASS" starttime="20200517 11:53:14.380" endtime="20200517 11:53:14.511"></status>
+</kw>
+<kw name="Click Element" library="SeleniumLibrary">
+<doc>Click the element identified by ``locator``.</doc>
+<arguments>
+<arg>xpath://span[text()='Clientes']</arg>
+</arguments>
+<msg timestamp="20200517 11:53:14.512" level="INFO">Clicking element 'xpath://span[text()='Clientes']'.</msg>
+<status status="PASS" starttime="20200517 11:53:14.512" endtime="20200517 11:53:14.624"></status>
+</kw>
+<kw name="Click Element" library="SeleniumLibrary">
+<doc>Click the element identified by ``locator``.</doc>
+<arguments>
+<arg>xpath://li/a[@title='Incluir']/span[text()='Incluir']</arg>
+</arguments>
+<msg timestamp="20200517 11:53:14.626" level="INFO">Clicking element 'xpath://li/a[@title='Incluir']/span[text()='Incluir']'.</msg>
+<status status="PASS" starttime="20200517 11:53:14.625" endtime="20200517 11:53:15.656"></status>
+</kw>
+<kw name="Wait Until Element Is Visible" library="SeleniumLibrary">
+<doc>Waits until the element ``locator`` is visible.</doc>
+<arguments>
+<arg>xpath://label[text()='Incluir Cliente']</arg>
+</arguments>
+<status status="PASS" starttime="20200517 11:53:15.656" endtime="20200517 11:53:15.716"></status>
+</kw>
+<status status="PASS" starttime="20200517 11:53:14.379" endtime="20200517 11:53:15.717"></status>
+</kw>
+<kw name="Create new Client" library="CadClientePage">
+<arguments>
+<arg>${json}</arg>
+</arguments>
+<kw name="Input Text" library="SeleniumLibrary">
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<arguments>
+<arg>css:input[name=nome]</arg>
+<arg>${json['nome']}</arg>
+</arguments>
+<msg timestamp="20200517 11:53:15.720" level="INFO">Typing text 'Luiza Niely' into text field 'css:input[name=nome]'.</msg>
+<status status="PASS" starttime="20200517 11:53:15.719" endtime="20200517 11:53:16.051"></status>
+</kw>
+<kw name="Input Text" library="SeleniumLibrary">
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<arguments>
+<arg>css:input[name=cpf]</arg>
+<arg>${json['cpf']}</arg>
+</arguments>
+<msg timestamp="20200517 11:53:16.053" level="INFO">Typing text '123.321.123-32' into text field 'css:input[name=cpf]'.</msg>
+<status status="PASS" starttime="20200517 11:53:16.052" endtime="20200517 11:53:16.262"></status>
+</kw>
+<kw name="Click Element" library="SeleniumLibrary">
+<doc>Click the element identified by ``locator``.</doc>
+<arguments>
+<arg>id:status</arg>
+</arguments>
+<msg timestamp="20200517 11:53:16.262" level="INFO">Clicking element 'id:status'.</msg>
+<status status="PASS" starttime="20200517 11:53:16.262" endtime="20200517 11:53:16.396"></status>
+</kw>
+<kw name="Click Element" library="SeleniumLibrary">
+<doc>Click the element identified by ``locator``.</doc>
+<arguments>
+<arg>xpath://option[text()='${json['ativo']}']</arg>
+</arguments>
+<msg timestamp="20200517 11:53:16.397" level="INFO">Clicking element 'xpath://option[text()='Ativo']'.</msg>
+<status status="PASS" starttime="20200517 11:53:16.396" endtime="20200517 11:53:16.478"></status>
+</kw>
+<kw name="Input Text" library="SeleniumLibrary">
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<arguments>
+<arg>css:input[name=saldoCliente]</arg>
+<arg>${json['saldo']}</arg>
+</arguments>
+<msg timestamp="20200517 11:53:16.479" level="INFO">Typing text '200.0' into text field 'css:input[name=saldoCliente]'.</msg>
+<status status="PASS" starttime="20200517 11:53:16.478" endtime="20200517 11:53:16.648"></status>
+</kw>
+<kw name="Click Element" library="SeleniumLibrary">
+<doc>Click the element identified by ``locator``.</doc>
+<arguments>
+<arg>id:botaoSalvar</arg>
+</arguments>
+<msg timestamp="20200517 11:53:16.648" level="INFO">Clicking element 'id:botaoSalvar'.</msg>
+<status status="PASS" starttime="20200517 11:53:16.648" endtime="20200517 11:53:16.776"></status>
+</kw>
+<status status="PASS" starttime="20200517 11:53:15.717" endtime="20200517 11:53:16.776"></status>
+</kw>
+<kw name="Então devo ver a mensagem &quot;Cliente salvo com sucesso&quot;" library="actions">
+<kw name="Wait Until Element Contains" library="SeleniumLibrary">
+<doc>Waits until the element ``locator`` contains ``text``.</doc>
+<arguments>
+<arg>${USER_SAVE}</arg>
+<arg>${messenger}</arg>
+</arguments>
+<status status="PASS" starttime="20200517 11:53:16.778" endtime="20200517 11:53:17.917"></status>
+</kw>
+<status status="PASS" starttime="20200517 11:53:16.777" endtime="20200517 11:53:17.918"></status>
+</kw>
+<kw name="Set Test Variable" library="BuiltIn">
+<doc>Makes a variable available everywhere within the scope of the current test.</doc>
+<arguments>
+<arg>${json}</arg>
+</arguments>
+<msg timestamp="20200517 11:53:17.919" level="INFO">${json} = {'nome': 'Luiza Niely', 'cpf': '123.321.123-32', 'ativo': 'Ativo', 'saldo': '200.0'}</msg>
+<status status="PASS" starttime="20200517 11:53:17.918" endtime="20200517 11:53:17.920"></status>
+</kw>
+<status status="PASS" starttime="20200517 11:53:14.374" endtime="20200517 11:53:17.920"></status>
+</kw>
+<kw name="Quando eu faço uma consulta desse cliente" library="actions">
+<kw name="Go To Client List" library="ConClientePage">
+<kw name="Click Element" library="SeleniumLibrary">
+<doc>Click the element identified by ``locator``.</doc>
+<arguments>
+<arg>xpath://span[text()='QA']</arg>
+</arguments>
+<msg timestamp="20200517 11:53:17.924" level="INFO">Clicking element 'xpath://span[text()='QA']'.</msg>
+<status status="PASS" starttime="20200517 11:53:17.923" endtime="20200517 11:53:18.037"></status>
+</kw>
+<kw name="Click Element" library="SeleniumLibrary">
+<doc>Click the element identified by ``locator``.</doc>
+<arguments>
+<arg>xpath://span[text()='Clientes']</arg>
+</arguments>
+<msg timestamp="20200517 11:53:18.038" level="INFO">Clicking element 'xpath://span[text()='Clientes']'.</msg>
+<status status="PASS" starttime="20200517 11:53:18.037" endtime="20200517 11:53:18.143"></status>
+</kw>
+<kw name="Click Element" library="SeleniumLibrary">
+<doc>Click the element identified by ``locator``.</doc>
+<arguments>
+<arg>xpath://li/a[@title='Listar']/span[text()='Listar']</arg>
+</arguments>
+<msg timestamp="20200517 11:53:18.144" level="INFO">Clicking element 'xpath://li/a[@title='Listar']/span[text()='Listar']'.</msg>
+<status status="PASS" starttime="20200517 11:53:18.143" endtime="20200517 11:53:19.077"></status>
+</kw>
+<kw name="Wait Until Element Contains" library="SeleniumLibrary">
+<doc>Waits until the element ``locator`` contains ``text``.</doc>
+<arguments>
+<arg>class:page-title</arg>
+<arg>Listar Clientes</arg>
+</arguments>
+<status status="PASS" starttime="20200517 11:53:19.077" endtime="20200517 11:53:19.144"></status>
+</kw>
+<status status="PASS" starttime="20200517 11:53:17.922" endtime="20200517 11:53:19.144"></status>
+</kw>
+<kw name="Input Text" library="SeleniumLibrary">
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<arguments>
+<arg>${FIELD_NAME}</arg>
+<arg>${json['nome']}</arg>
+</arguments>
+<msg timestamp="20200517 11:53:19.145" level="INFO">Typing text 'Luiza Niely' into text field 'name:j_idt17'.</msg>
+<status status="PASS" starttime="20200517 11:53:19.145" endtime="20200517 11:53:19.360"></status>
+</kw>
+<kw name="Click Element" library="SeleniumLibrary">
+<doc>Click the element identified by ``locator``.</doc>
+<arguments>
+<arg>${BUTTON_SAVE}</arg>
+</arguments>
+<msg timestamp="20200517 11:53:19.361" level="INFO">Clicking element 'name:j_idt20'.</msg>
+<status status="PASS" starttime="20200517 11:53:19.360" endtime="20200517 11:53:20.764"></status>
+</kw>
+<status status="PASS" starttime="20200517 11:53:17.921" endtime="20200517 11:53:20.764"></status>
+</kw>
+<kw name="Então devo vê-lo na lista" library="actions">
+<kw name="Table Should Contain" library="SeleniumLibrary">
+<doc>Verifies table contains text ``expected``.</doc>
+<arguments>
+<arg>${TABLE}</arg>
+<arg>${json['nome']}</arg>
+</arguments>
+<status status="PASS" starttime="20200517 11:53:20.770" endtime="20200517 11:53:21.160"></status>
+</kw>
+<status status="PASS" starttime="20200517 11:53:20.769" endtime="20200517 11:53:21.160"></status>
+</kw>
+<status status="PASS" starttime="20200517 11:53:14.373" endtime="20200517 11:53:21.161" critical="yes"></status>
+</test>
+<test id="s1-s2-t2" name="Consulta informações do cliente">
+<kw name="Dado que eu tenha um cliente &quot;cliente05.json&quot; cadastrado" library="actions">
+<kw name="Get Client Json" library="actions">
+<arguments>
+<arg>${file}</arg>
+</arguments>
+<assign>
+<var>${json}</var>
+</assign>
+<kw name="Get File" library="OperatingSystem">
+<doc>Returns the contents of a specified file.</doc>
+<arguments>
+<arg>resources/fixtures/${file}</arg>
+</arguments>
+<assign>
+<var>${file}</var>
+</assign>
+<msg timestamp="20200517 11:53:21.169" level="INFO" html="yes">Getting file '&lt;a href="file://C:\Projects\Desafio Conductor\frontend\resources\fixtures\cliente05.json"&gt;C:\Projects\Desafio Conductor\frontend\resources\fixtures\cliente05.json&lt;/a&gt;'.</msg>
+<msg timestamp="20200517 11:53:21.169" level="INFO">${file} = {
+    "nome": "José Falcão",
+    "cpf": "123.456.789-10",
+    "ativo": "Ativo",
+    "saldo": "4800.0"
+}</msg>
+<status status="PASS" starttime="20200517 11:53:21.168" endtime="20200517 11:53:21.169"></status>
+</kw>
+<kw name="Evaluate" library="BuiltIn">
+<doc>Evaluates the given expression in Python and returns the results.</doc>
+<arguments>
+<arg>json.loads($file)</arg>
+<arg>json</arg>
+</arguments>
+<assign>
+<var>${json}</var>
+</assign>
+<msg timestamp="20200517 11:53:21.172" level="INFO">${json} = {'nome': 'José Falcão', 'cpf': '123.456.789-10', 'ativo': 'Ativo', 'saldo': '4800.0'}</msg>
+<status status="PASS" starttime="20200517 11:53:21.170" endtime="20200517 11:53:21.172"></status>
+</kw>
+<msg timestamp="20200517 11:53:21.172" level="INFO">${json} = {'nome': 'José Falcão', 'cpf': '123.456.789-10', 'ativo': 'Ativo', 'saldo': '4800.0'}</msg>
+<status status="PASS" starttime="20200517 11:53:21.167" endtime="20200517 11:53:21.172"></status>
+</kw>
+<kw name="Go To Client Form" library="CadClientePage">
+<kw name="Click Element" library="SeleniumLibrary">
+<doc>Click the element identified by ``locator``.</doc>
+<arguments>
+<arg>xpath://span[text()='QA']</arg>
+</arguments>
+<msg timestamp="20200517 11:53:21.173" level="INFO">Clicking element 'xpath://span[text()='QA']'.</msg>
+<status status="PASS" starttime="20200517 11:53:21.173" endtime="20200517 11:53:21.276"></status>
+</kw>
+<kw name="Click Element" library="SeleniumLibrary">
+<doc>Click the element identified by ``locator``.</doc>
+<arguments>
+<arg>xpath://span[text()='Clientes']</arg>
+</arguments>
+<msg timestamp="20200517 11:53:21.277" level="INFO">Clicking element 'xpath://span[text()='Clientes']'.</msg>
+<status status="PASS" starttime="20200517 11:53:21.277" endtime="20200517 11:53:21.392"></status>
+</kw>
+<kw name="Click Element" library="SeleniumLibrary">
+<doc>Click the element identified by ``locator``.</doc>
+<arguments>
+<arg>xpath://li/a[@title='Incluir']/span[text()='Incluir']</arg>
+</arguments>
+<msg timestamp="20200517 11:53:21.393" level="INFO">Clicking element 'xpath://li/a[@title='Incluir']/span[text()='Incluir']'.</msg>
+<status status="PASS" starttime="20200517 11:53:21.392" endtime="20200517 11:53:22.929"></status>
+</kw>
+<kw name="Wait Until Element Is Visible" library="SeleniumLibrary">
+<doc>Waits until the element ``locator`` is visible.</doc>
+<arguments>
+<arg>xpath://label[text()='Incluir Cliente']</arg>
+</arguments>
+<status status="PASS" starttime="20200517 11:53:22.929" endtime="20200517 11:53:23.008"></status>
+</kw>
+<status status="PASS" starttime="20200517 11:53:21.172" endtime="20200517 11:53:23.008"></status>
+</kw>
+<kw name="Create new Client" library="CadClientePage">
+<arguments>
+<arg>${json}</arg>
+</arguments>
+<kw name="Input Text" library="SeleniumLibrary">
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<arguments>
+<arg>css:input[name=nome]</arg>
+<arg>${json['nome']}</arg>
+</arguments>
+<msg timestamp="20200517 11:53:23.010" level="INFO">Typing text 'José Falcão' into text field 'css:input[name=nome]'.</msg>
+<status status="PASS" starttime="20200517 11:53:23.009" endtime="20200517 11:53:23.594"></status>
+</kw>
+<kw name="Input Text" library="SeleniumLibrary">
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<arguments>
+<arg>css:input[name=cpf]</arg>
+<arg>${json['cpf']}</arg>
+</arguments>
+<msg timestamp="20200517 11:53:23.595" level="INFO">Typing text '123.456.789-10' into text field 'css:input[name=cpf]'.</msg>
+<status status="PASS" starttime="20200517 11:53:23.595" endtime="20200517 11:53:23.796"></status>
+</kw>
+<kw name="Click Element" library="SeleniumLibrary">
+<doc>Click the element identified by ``locator``.</doc>
+<arguments>
+<arg>id:status</arg>
+</arguments>
+<msg timestamp="20200517 11:53:23.797" level="INFO">Clicking element 'id:status'.</msg>
+<status status="PASS" starttime="20200517 11:53:23.796" endtime="20200517 11:53:23.973"></status>
+</kw>
+<kw name="Click Element" library="SeleniumLibrary">
+<doc>Click the element identified by ``locator``.</doc>
+<arguments>
+<arg>xpath://option[text()='${json['ativo']}']</arg>
+</arguments>
+<msg timestamp="20200517 11:53:23.974" level="INFO">Clicking element 'xpath://option[text()='Ativo']'.</msg>
+<status status="PASS" starttime="20200517 11:53:23.973" endtime="20200517 11:53:24.066"></status>
+</kw>
+<kw name="Input Text" library="SeleniumLibrary">
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<arguments>
+<arg>css:input[name=saldoCliente]</arg>
+<arg>${json['saldo']}</arg>
+</arguments>
+<msg timestamp="20200517 11:53:24.068" level="INFO">Typing text '4800.0' into text field 'css:input[name=saldoCliente]'.</msg>
+<status status="PASS" starttime="20200517 11:53:24.066" endtime="20200517 11:53:24.225"></status>
+</kw>
+<kw name="Click Element" library="SeleniumLibrary">
+<doc>Click the element identified by ``locator``.</doc>
+<arguments>
+<arg>id:botaoSalvar</arg>
+</arguments>
+<msg timestamp="20200517 11:53:24.226" level="INFO">Clicking element 'id:botaoSalvar'.</msg>
+<status status="PASS" starttime="20200517 11:53:24.225" endtime="20200517 11:53:24.341"></status>
+</kw>
+<status status="PASS" starttime="20200517 11:53:23.008" endtime="20200517 11:53:24.341"></status>
+</kw>
+<kw name="Então devo ver a mensagem &quot;Cliente salvo com sucesso&quot;" library="actions">
+<kw name="Wait Until Element Contains" library="SeleniumLibrary">
+<doc>Waits until the element ``locator`` contains ``text``.</doc>
+<arguments>
+<arg>${USER_SAVE}</arg>
+<arg>${messenger}</arg>
+</arguments>
+<status status="PASS" starttime="20200517 11:53:24.343" endtime="20200517 11:53:25.943"></status>
+</kw>
+<status status="PASS" starttime="20200517 11:53:24.342" endtime="20200517 11:53:25.943"></status>
+</kw>
+<kw name="Set Test Variable" library="BuiltIn">
+<doc>Makes a variable available everywhere within the scope of the current test.</doc>
+<arguments>
+<arg>${json}</arg>
+</arguments>
+<msg timestamp="20200517 11:53:25.944" level="INFO">${json} = {'nome': 'José Falcão', 'cpf': '123.456.789-10', 'ativo': 'Ativo', 'saldo': '4800.0'}</msg>
+<status status="PASS" starttime="20200517 11:53:25.944" endtime="20200517 11:53:25.944"></status>
+</kw>
+<status status="PASS" starttime="20200517 11:53:21.167" endtime="20200517 11:53:25.945"></status>
+</kw>
+<kw name="Quando eu faço uma consulta desse cliente" library="actions">
+<kw name="Go To Client List" library="ConClientePage">
+<kw name="Click Element" library="SeleniumLibrary">
+<doc>Click the element identified by ``locator``.</doc>
+<arguments>
+<arg>xpath://span[text()='QA']</arg>
+</arguments>
+<msg timestamp="20200517 11:53:25.947" level="INFO">Clicking element 'xpath://span[text()='QA']'.</msg>
+<status status="PASS" starttime="20200517 11:53:25.947" endtime="20200517 11:53:26.067"></status>
+</kw>
+<kw name="Click Element" library="SeleniumLibrary">
+<doc>Click the element identified by ``locator``.</doc>
+<arguments>
+<arg>xpath://span[text()='Clientes']</arg>
+</arguments>
+<msg timestamp="20200517 11:53:26.069" level="INFO">Clicking element 'xpath://span[text()='Clientes']'.</msg>
+<status status="PASS" starttime="20200517 11:53:26.068" endtime="20200517 11:53:26.159"></status>
+</kw>
+<kw name="Click Element" library="SeleniumLibrary">
+<doc>Click the element identified by ``locator``.</doc>
+<arguments>
+<arg>xpath://li/a[@title='Listar']/span[text()='Listar']</arg>
+</arguments>
+<msg timestamp="20200517 11:53:26.160" level="INFO">Clicking element 'xpath://li/a[@title='Listar']/span[text()='Listar']'.</msg>
+<status status="PASS" starttime="20200517 11:53:26.160" endtime="20200517 11:53:27.558"></status>
+</kw>
+<kw name="Wait Until Element Contains" library="SeleniumLibrary">
+<doc>Waits until the element ``locator`` contains ``text``.</doc>
+<arguments>
+<arg>class:page-title</arg>
+<arg>Listar Clientes</arg>
+</arguments>
+<status status="PASS" starttime="20200517 11:53:27.559" endtime="20200517 11:53:27.620"></status>
+</kw>
+<status status="PASS" starttime="20200517 11:53:25.946" endtime="20200517 11:53:27.620"></status>
+</kw>
+<kw name="Input Text" library="SeleniumLibrary">
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<arguments>
+<arg>${FIELD_NAME}</arg>
+<arg>${json['nome']}</arg>
+</arguments>
+<msg timestamp="20200517 11:53:27.622" level="INFO">Typing text 'José Falcão' into text field 'name:j_idt17'.</msg>
+<status status="PASS" starttime="20200517 11:53:27.621" endtime="20200517 11:53:27.814"></status>
+</kw>
+<kw name="Click Element" library="SeleniumLibrary">
+<doc>Click the element identified by ``locator``.</doc>
+<arguments>
+<arg>${BUTTON_SAVE}</arg>
+</arguments>
+<msg timestamp="20200517 11:53:27.815" level="INFO">Clicking element 'name:j_idt20'.</msg>
+<status status="PASS" starttime="20200517 11:53:27.814" endtime="20200517 11:53:29.127"></status>
+</kw>
+<status status="PASS" starttime="20200517 11:53:25.945" endtime="20200517 11:53:29.127"></status>
+</kw>
+<kw name="E solicito uma busca" library="actions">
+<kw name="Table Should Contain" library="SeleniumLibrary">
+<doc>Verifies table contains text ``expected``.</doc>
+<arguments>
+<arg>${TABLE}</arg>
+<arg>${json['nome']}</arg>
+</arguments>
+<status status="PASS" starttime="20200517 11:53:29.129" endtime="20200517 11:53:29.512"></status>
+</kw>
+<kw name="Click Element" library="SeleniumLibrary">
+<doc>Click the element identified by ``locator``.</doc>
+<arguments>
+<arg>${BUTTON_SEARCH}</arg>
+</arguments>
+<msg timestamp="20200517 11:53:29.512" level="INFO">Clicking element 'class:fa-search'.</msg>
+<status status="PASS" starttime="20200517 11:53:29.512" endtime="20200517 11:53:30.837"></status>
+</kw>
+<status status="PASS" starttime="20200517 11:53:29.129" endtime="20200517 11:53:30.838"></status>
+</kw>
+<kw name="Então devo ver a mensagem" library="actions">
+<arguments>
+<arg>Visualizar Cliente</arg>
+</arguments>
+<kw name="Wait Until Element Contains" library="SeleniumLibrary">
+<doc>Waits until the element ``locator`` contains ``text``.</doc>
+<arguments>
+<arg>${INFO_USER}</arg>
+<arg>${messenger}</arg>
+</arguments>
+<status status="PASS" starttime="20200517 11:53:30.843" endtime="20200517 11:53:30.902"></status>
+</kw>
+<status status="PASS" starttime="20200517 11:53:30.842" endtime="20200517 11:53:30.902"></status>
+</kw>
+<status status="PASS" starttime="20200517 11:53:21.164" endtime="20200517 11:53:30.902" critical="yes"></status>
+</test>
+<kw name="Close Session" library="BasePage" type="teardown">
+<kw name="Capture Page Screenshot" library="SeleniumLibrary">
+<doc>Takes a screenshot of the current page and embeds it into a log file.</doc>
+<msg timestamp="20200517 11:53:31.341" level="INFO" html="yes">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="selenium-screenshot-231.png"&gt;&lt;img src="selenium-screenshot-231.png" width="800px"&gt;&lt;/a&gt;</msg>
+<status status="PASS" starttime="20200517 11:53:30.905" endtime="20200517 11:53:31.341"></status>
+</kw>
+<kw name="Close Browser" library="SeleniumLibrary">
+<doc>Closes the current browser.</doc>
+<status status="PASS" starttime="20200517 11:53:31.342" endtime="20200517 11:53:33.622"></status>
+</kw>
+<status status="PASS" starttime="20200517 11:53:30.905" endtime="20200517 11:53:33.622"></status>
+</kw>
+<doc>Consulta de Cliente
+Sendo um administrador da página
+Quero consultar o(s) cliente(s) cadastrado(s)
+Para que eu possa gerenciar meus clientes</doc>
+<status status="PASS" starttime="20200517 11:53:01.131" endtime="20200517 11:53:33.622"></status>
+</suite>
+<suite id="s1-s3" name="Consulta Venda" source="C:\Projects\Desafio Conductor\frontend\tests\consulta_venda.robot">
+<kw name="Login Session" library="BasePage" type="setup">
+<kw name="Open Session" library="BasePage">
+<kw name="Open Browser" library="SeleniumLibrary">
+<doc>Opens a new browser instance to the optional ``url``.</doc>
+<arguments>
+<arg>${base_url}/login</arg>
+<arg>chrome</arg>
+<arg>options=add_experimental_option('excludeSwitches', ['enable-logging'])</arg>
+</arguments>
+<msg timestamp="20200517 11:53:33.669" level="INFO">Opening browser 'chrome' to base url 'http://provaqa.marketpay.com.br:9083/desafioqa/login'.</msg>
+<status status="PASS" starttime="20200517 11:53:33.669" endtime="20200517 11:53:40.692"></status>
+</kw>
+<kw name="Set Selenium Implicit Wait" library="SeleniumLibrary">
+<doc>Sets the implicit wait value used by Selenium.</doc>
+<arguments>
+<arg>5</arg>
+</arguments>
+<status status="PASS" starttime="20200517 11:53:40.693" endtime="20200517 11:53:40.695"></status>
+</kw>
+<kw name="Set Window Size" library="SeleniumLibrary">
+<doc>Sets current windows size to given ``width`` and ``height``.</doc>
+<arguments>
+<arg>1280</arg>
+<arg>800</arg>
+</arguments>
+<status status="PASS" starttime="20200517 11:53:40.696" endtime="20200517 11:53:44.869"></status>
+</kw>
+<status status="PASS" starttime="20200517 11:53:33.669" endtime="20200517 11:53:44.870"></status>
+</kw>
+<kw name="Login With" library="LoginPage">
+<arguments>
+<arg>admin</arg>
+<arg>admin</arg>
+</arguments>
+<kw name="Input Text" library="SeleniumLibrary">
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<arguments>
+<arg>name:username</arg>
+<arg>${user}</arg>
+</arguments>
+<msg timestamp="20200517 11:53:44.873" level="INFO">Typing text 'admin' into text field 'name:username'.</msg>
+<status status="PASS" starttime="20200517 11:53:44.872" endtime="20200517 11:53:45.047"></status>
+</kw>
+<kw name="Input Text" library="SeleniumLibrary">
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<arguments>
+<arg>name:password</arg>
+<arg>${pass}</arg>
+</arguments>
+<msg timestamp="20200517 11:53:45.047" level="INFO">Typing text 'admin' into text field 'name:password'.</msg>
+<status status="PASS" starttime="20200517 11:53:45.047" endtime="20200517 11:53:45.222"></status>
+</kw>
+<kw name="Click Element" library="SeleniumLibrary">
+<doc>Click the element identified by ``locator``.</doc>
+<arguments>
+<arg>class:btn</arg>
+</arguments>
+<msg timestamp="20200517 11:53:45.223" level="INFO">Clicking element 'class:btn'.</msg>
+<status status="PASS" starttime="20200517 11:53:45.222" endtime="20200517 11:53:47.546"></status>
+</kw>
+<status status="PASS" starttime="20200517 11:53:44.870" endtime="20200517 11:53:47.546"></status>
+</kw>
+<status status="PASS" starttime="20200517 11:53:33.669" endtime="20200517 11:53:47.547"></status>
+</kw>
+<test id="s1-s3-t1" name="Consulta vendas por cliente">
+<kw name="Dado que eu tenha um cliente &quot;cliente07.json&quot; cadastrado" library="actions">
+<kw name="Get Client Json" library="actions">
+<arguments>
+<arg>${file}</arg>
+</arguments>
+<assign>
+<var>${json}</var>
+</assign>
+<kw name="Get File" library="OperatingSystem">
+<doc>Returns the contents of a specified file.</doc>
+<arguments>
+<arg>resources/fixtures/${file}</arg>
+</arguments>
+<assign>
+<var>${file}</var>
+</assign>
+<msg timestamp="20200517 11:53:47.552" level="INFO" html="yes">Getting file '&lt;a href="file://C:\Projects\Desafio Conductor\frontend\resources\fixtures\cliente07.json"&gt;C:\Projects\Desafio Conductor\frontend\resources\fixtures\cliente07.json&lt;/a&gt;'.</msg>
+<msg timestamp="20200517 11:53:47.552" level="INFO">${file} = {
+    "nome": "Maria Santos",
+    "cpf": "123.456.111-22",
+    "ativo": "Ativo",
+    "saldo": "1.0000"
+}</msg>
+<status status="PASS" starttime="20200517 11:53:47.552" endtime="20200517 11:53:47.552"></status>
+</kw>
+<kw name="Evaluate" library="BuiltIn">
+<doc>Evaluates the given expression in Python and returns the results.</doc>
+<arguments>
+<arg>json.loads($file)</arg>
+<arg>json</arg>
+</arguments>
+<assign>
+<var>${json}</var>
+</assign>
+<msg timestamp="20200517 11:53:47.552" level="INFO">${json} = {'nome': 'Maria Santos', 'cpf': '123.456.111-22', 'ativo': 'Ativo', 'saldo': '1.0000'}</msg>
+<status status="PASS" starttime="20200517 11:53:47.552" endtime="20200517 11:53:47.552"></status>
+</kw>
+<msg timestamp="20200517 11:53:47.552" level="INFO">${json} = {'nome': 'Maria Santos', 'cpf': '123.456.111-22', 'ativo': 'Ativo', 'saldo': '1.0000'}</msg>
+<status status="PASS" starttime="20200517 11:53:47.551" endtime="20200517 11:53:47.552"></status>
+</kw>
+<kw name="Go To Client Form" library="CadClientePage">
+<kw name="Click Element" library="SeleniumLibrary">
+<doc>Click the element identified by ``locator``.</doc>
+<arguments>
+<arg>xpath://span[text()='QA']</arg>
+</arguments>
+<msg timestamp="20200517 11:53:47.552" level="INFO">Clicking element 'xpath://span[text()='QA']'.</msg>
+<status status="PASS" starttime="20200517 11:53:47.552" endtime="20200517 11:53:47.708"></status>
+</kw>
+<kw name="Click Element" library="SeleniumLibrary">
+<doc>Click the element identified by ``locator``.</doc>
+<arguments>
+<arg>xpath://span[text()='Clientes']</arg>
+</arguments>
+<msg timestamp="20200517 11:53:47.709" level="INFO">Clicking element 'xpath://span[text()='Clientes']'.</msg>
+<status status="PASS" starttime="20200517 11:53:47.708" endtime="20200517 11:53:47.832"></status>
+</kw>
+<kw name="Click Element" library="SeleniumLibrary">
+<doc>Click the element identified by ``locator``.</doc>
+<arguments>
+<arg>xpath://li/a[@title='Incluir']/span[text()='Incluir']</arg>
+</arguments>
+<msg timestamp="20200517 11:53:47.834" level="INFO">Clicking element 'xpath://li/a[@title='Incluir']/span[text()='Incluir']'.</msg>
+<status status="PASS" starttime="20200517 11:53:47.833" endtime="20200517 11:53:49.026"></status>
+</kw>
+<kw name="Wait Until Element Is Visible" library="SeleniumLibrary">
+<doc>Waits until the element ``locator`` is visible.</doc>
+<arguments>
+<arg>xpath://label[text()='Incluir Cliente']</arg>
+</arguments>
+<status status="PASS" starttime="20200517 11:53:49.027" endtime="20200517 11:53:49.107"></status>
+</kw>
+<status status="PASS" starttime="20200517 11:53:47.552" endtime="20200517 11:53:49.108"></status>
+</kw>
+<kw name="Create new Client" library="CadClientePage">
+<arguments>
+<arg>${json}</arg>
+</arguments>
+<kw name="Input Text" library="SeleniumLibrary">
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<arguments>
+<arg>css:input[name=nome]</arg>
+<arg>${json['nome']}</arg>
+</arguments>
+<msg timestamp="20200517 11:53:49.110" level="INFO">Typing text 'Maria Santos' into text field 'css:input[name=nome]'.</msg>
+<status status="PASS" starttime="20200517 11:53:49.109" endtime="20200517 11:53:49.511"></status>
+</kw>
+<kw name="Input Text" library="SeleniumLibrary">
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<arguments>
+<arg>css:input[name=cpf]</arg>
+<arg>${json['cpf']}</arg>
+</arguments>
+<msg timestamp="20200517 11:53:49.512" level="INFO">Typing text '123.456.111-22' into text field 'css:input[name=cpf]'.</msg>
+<status status="PASS" starttime="20200517 11:53:49.511" endtime="20200517 11:53:49.756"></status>
+</kw>
+<kw name="Click Element" library="SeleniumLibrary">
+<doc>Click the element identified by ``locator``.</doc>
+<arguments>
+<arg>id:status</arg>
+</arguments>
+<msg timestamp="20200517 11:53:49.757" level="INFO">Clicking element 'id:status'.</msg>
+<status status="PASS" starttime="20200517 11:53:49.756" endtime="20200517 11:53:49.912"></status>
+</kw>
+<kw name="Click Element" library="SeleniumLibrary">
+<doc>Click the element identified by ``locator``.</doc>
+<arguments>
+<arg>xpath://option[text()='${json['ativo']}']</arg>
+</arguments>
+<msg timestamp="20200517 11:53:49.913" level="INFO">Clicking element 'xpath://option[text()='Ativo']'.</msg>
+<status status="PASS" starttime="20200517 11:53:49.912" endtime="20200517 11:53:50.015"></status>
+</kw>
+<kw name="Input Text" library="SeleniumLibrary">
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<arguments>
+<arg>css:input[name=saldoCliente]</arg>
+<arg>${json['saldo']}</arg>
+</arguments>
+<msg timestamp="20200517 11:53:50.018" level="INFO">Typing text '1.0000' into text field 'css:input[name=saldoCliente]'.</msg>
+<status status="PASS" starttime="20200517 11:53:50.017" endtime="20200517 11:53:50.246"></status>
+</kw>
+<kw name="Click Element" library="SeleniumLibrary">
+<doc>Click the element identified by ``locator``.</doc>
+<arguments>
+<arg>id:botaoSalvar</arg>
+</arguments>
+<msg timestamp="20200517 11:53:50.247" level="INFO">Clicking element 'id:botaoSalvar'.</msg>
+<status status="PASS" starttime="20200517 11:53:50.246" endtime="20200517 11:53:50.438"></status>
+</kw>
+<status status="PASS" starttime="20200517 11:53:49.108" endtime="20200517 11:53:50.438"></status>
+</kw>
+<kw name="Então devo ver a mensagem &quot;Cliente salvo com sucesso&quot;" library="actions">
+<kw name="Wait Until Element Contains" library="SeleniumLibrary">
+<doc>Waits until the element ``locator`` contains ``text``.</doc>
+<arguments>
+<arg>${USER_SAVE}</arg>
+<arg>${messenger}</arg>
+</arguments>
+<status status="PASS" starttime="20200517 11:53:50.439" endtime="20200517 11:53:51.542"></status>
+</kw>
+<status status="PASS" starttime="20200517 11:53:50.439" endtime="20200517 11:53:51.542"></status>
+</kw>
+<kw name="Set Test Variable" library="BuiltIn">
+<doc>Makes a variable available everywhere within the scope of the current test.</doc>
+<arguments>
+<arg>${json}</arg>
+</arguments>
+<msg timestamp="20200517 11:53:51.543" level="INFO">${json} = {'nome': 'Maria Santos', 'cpf': '123.456.111-22', 'ativo': 'Ativo', 'saldo': '1.0000'}</msg>
+<status status="PASS" starttime="20200517 11:53:51.542" endtime="20200517 11:53:51.543"></status>
+</kw>
+<status status="PASS" starttime="20200517 11:53:47.550" endtime="20200517 11:53:51.543"></status>
+</kw>
+<kw name="Quando eu incluo uma transação" library="actions">
+<kw name="Go To Transaction Form" library="incVendaPage">
+<kw name="Click Element" library="SeleniumLibrary">
+<doc>Click the element identified by ``locator``.</doc>
+<arguments>
+<arg>xpath://span[text()='QA']</arg>
+</arguments>
+<msg timestamp="20200517 11:53:51.546" level="INFO">Clicking element 'xpath://span[text()='QA']'.</msg>
+<status status="PASS" starttime="20200517 11:53:51.546" endtime="20200517 11:53:51.672"></status>
+</kw>
+<kw name="Click Element" library="SeleniumLibrary">
+<doc>Click the element identified by ``locator``.</doc>
+<arguments>
+<arg>xpath://span[text()='Transações']</arg>
+</arguments>
+<msg timestamp="20200517 11:53:51.675" level="INFO">Clicking element 'xpath://span[text()='Transações']'.</msg>
+<status status="PASS" starttime="20200517 11:53:51.673" endtime="20200517 11:53:51.793"></status>
+</kw>
+<kw name="Click Element" library="SeleniumLibrary">
+<doc>Click the element identified by ``locator``.</doc>
+<arguments>
+<arg>xpath://li/a[@title='Dashboard']/span[text()='Incluir']</arg>
+</arguments>
+<msg timestamp="20200517 11:53:51.794" level="INFO">Clicking element 'xpath://li/a[@title='Dashboard']/span[text()='Incluir']'.</msg>
+<status status="PASS" starttime="20200517 11:53:51.794" endtime="20200517 11:53:52.754"></status>
+</kw>
+<kw name="Wait Until Element Is Visible" library="SeleniumLibrary">
+<doc>Waits until the element ``locator`` is visible.</doc>
+<arguments>
+<arg>xpath://label[text()='Incluir Transacao']</arg>
+</arguments>
+<status status="PASS" starttime="20200517 11:53:52.755" endtime="20200517 11:53:52.821"></status>
+</kw>
+<status status="PASS" starttime="20200517 11:53:51.545" endtime="20200517 11:53:52.821"></status>
+</kw>
+<kw name="Click Element" library="SeleniumLibrary">
+<doc>Click the element identified by ``locator``.</doc>
+<arguments>
+<arg>${DROP_NAME}</arg>
+</arguments>
+<msg timestamp="20200517 11:53:52.822" level="INFO">Clicking element 'name:cliente'.</msg>
+<status status="PASS" starttime="20200517 11:53:52.821" endtime="20200517 11:53:53.010"></status>
+</kw>
+<kw name="Click Element" library="SeleniumLibrary">
+<doc>Click the element identified by ``locator``.</doc>
+<arguments>
+<arg>xpath://select/option[text()='${json['nome']}']</arg>
+</arguments>
+<msg timestamp="20200517 11:53:53.011" level="INFO">Clicking element 'xpath://select/option[text()='Maria Santos']'.</msg>
+<status status="PASS" starttime="20200517 11:53:53.011" endtime="20200517 11:53:53.139"></status>
+</kw>
+<kw name="Input Text" library="SeleniumLibrary">
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<arguments>
+<arg>${DROP_VALUE}</arg>
+<arg>${json['saldo']}</arg>
+</arguments>
+<msg timestamp="20200517 11:53:53.141" level="INFO">Typing text '1.0000' into text field 'name:valorTransacao'.</msg>
+<status status="PASS" starttime="20200517 11:53:53.140" endtime="20200517 11:53:53.336"></status>
+</kw>
+<kw name="Click Element" library="SeleniumLibrary">
+<doc>Click the element identified by ``locator``.</doc>
+<arguments>
+<arg>${BUTTON_INCLUD}</arg>
+</arguments>
+<msg timestamp="20200517 11:53:53.337" level="INFO">Clicking element 'id:botaoSalvar'.</msg>
+<status status="PASS" starttime="20200517 11:53:53.337" endtime="20200517 11:53:53.460"></status>
+</kw>
+<kw name="Então devo ver a mensagem &quot;Venda realizada com sucesso&quot;" library="actions">
+<kw name="Wait Until Element Contains" library="SeleniumLibrary">
+<doc>Waits until the element ``locator`` contains ``text``.</doc>
+<arguments>
+<arg>${USER_SAVE}</arg>
+<arg>${messenger}</arg>
+</arguments>
+<status status="PASS" starttime="20200517 11:53:53.461" endtime="20200517 11:53:54.476"></status>
+</kw>
+<status status="PASS" starttime="20200517 11:53:53.460" endtime="20200517 11:53:54.476"></status>
+</kw>
+<status status="PASS" starttime="20200517 11:53:51.544" endtime="20200517 11:53:54.476"></status>
+</kw>
+<kw name="E faço uma consulta dessa transação" library="actions">
+<kw name="Go To Transaction List" library="conVendaPage">
+<kw name="Click Element" library="SeleniumLibrary">
+<doc>Click the element identified by ``locator``.</doc>
+<arguments>
+<arg>xpath://span[text()='QA']</arg>
+</arguments>
+<msg timestamp="20200517 11:53:54.479" level="INFO">Clicking element 'xpath://span[text()='QA']'.</msg>
+<status status="PASS" starttime="20200517 11:53:54.478" endtime="20200517 11:53:54.597"></status>
+</kw>
+<kw name="Click Element" library="SeleniumLibrary">
+<doc>Click the element identified by ``locator``.</doc>
+<arguments>
+<arg>xpath://a[@title='Transações']/span[text()='Transações']</arg>
+</arguments>
+<msg timestamp="20200517 11:53:54.600" level="INFO">Clicking element 'xpath://a[@title='Transações']/span[text()='Transações']'.</msg>
+<status status="PASS" starttime="20200517 11:53:54.598" endtime="20200517 11:53:54.727"></status>
+</kw>
+<kw name="Click Element" library="SeleniumLibrary">
+<doc>Click the element identified by ``locator``.</doc>
+<arguments>
+<arg>xpath://a[@title='Dashboard']/span[text()='Listar']</arg>
+</arguments>
+<msg timestamp="20200517 11:53:54.728" level="INFO">Clicking element 'xpath://a[@title='Dashboard']/span[text()='Listar']'.</msg>
+<status status="PASS" starttime="20200517 11:53:54.727" endtime="20200517 11:53:55.643"></status>
+</kw>
+<kw name="Wait Until Element Contains" library="SeleniumLibrary">
+<doc>Waits until the element ``locator`` contains ``text``.</doc>
+<arguments>
+<arg>class:page-title</arg>
+<arg>Listar Transações</arg>
+</arguments>
+<status status="PASS" starttime="20200517 11:53:55.643" endtime="20200517 11:53:55.698"></status>
+</kw>
+<status status="PASS" starttime="20200517 11:53:54.478" endtime="20200517 11:53:55.699"></status>
+</kw>
+<kw name="Click Element" library="SeleniumLibrary">
+<doc>Click the element identified by ``locator``.</doc>
+<arguments>
+<arg>${DROP_CLIENT}</arg>
+</arguments>
+<msg timestamp="20200517 11:53:55.702" level="INFO">Clicking element 'id:cliente'.</msg>
+<status status="PASS" starttime="20200517 11:53:55.701" endtime="20200517 11:53:55.864"></status>
+</kw>
+<kw name="Click Element" library="SeleniumLibrary">
+<doc>Click the element identified by ``locator``.</doc>
+<arguments>
+<arg>xpath://select/option[text()='${json['nome']}']</arg>
+</arguments>
+<msg timestamp="20200517 11:53:55.869" level="INFO">Clicking element 'xpath://select/option[text()='Maria Santos']'.</msg>
+<status status="PASS" starttime="20200517 11:53:55.866" endtime="20200517 11:53:55.971"></status>
+</kw>
+<kw name="Click Element" library="SeleniumLibrary">
+<doc>Click the element identified by ``locator``.</doc>
+<arguments>
+<arg>${BUTTON_SEARCH_TRANS}</arg>
+</arguments>
+<msg timestamp="20200517 11:53:55.973" level="INFO">Clicking element 'name:j_idt20'.</msg>
+<status status="PASS" starttime="20200517 11:53:55.972" endtime="20200517 11:53:56.929"></status>
+</kw>
+<status status="PASS" starttime="20200517 11:53:54.477" endtime="20200517 11:53:56.929"></status>
+</kw>
+<kw name="Então devo vê-lo na lista" library="actions">
+<kw name="Table Should Contain" library="SeleniumLibrary">
+<doc>Verifies table contains text ``expected``.</doc>
+<arguments>
+<arg>${TABLE}</arg>
+<arg>${json['nome']}</arg>
+</arguments>
+<kw name="Capture Page Screenshot" library="SeleniumLibrary">
+<doc>Takes a screenshot of the current page and embeds it into a log file.</doc>
+<msg timestamp="20200517 11:53:57.724" level="INFO" html="yes">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="selenium-screenshot-232.png"&gt;&lt;img src="selenium-screenshot-232.png" width="800px"&gt;&lt;/a&gt;</msg>
+<status status="PASS" starttime="20200517 11:53:57.311" endtime="20200517 11:53:57.724"></status>
+</kw>
+<msg timestamp="20200517 11:53:57.727" level="FAIL">Table 'class:table' did not contain text 'Maria Santos'.</msg>
+<status status="FAIL" starttime="20200517 11:53:56.930" endtime="20200517 11:53:57.727"></status>
+</kw>
+<status status="FAIL" starttime="20200517 11:53:56.930" endtime="20200517 11:53:57.727"></status>
+</kw>
+<status status="FAIL" starttime="20200517 11:53:47.547" endtime="20200517 11:53:57.728" critical="yes">Table 'class:table' did not contain text 'Maria Santos'.</status>
+</test>
+<kw name="Close Session" library="BasePage" type="teardown">
+<kw name="Capture Page Screenshot" library="SeleniumLibrary">
+<doc>Takes a screenshot of the current page and embeds it into a log file.</doc>
+<msg timestamp="20200517 11:53:58.142" level="INFO" html="yes">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="selenium-screenshot-233.png"&gt;&lt;img src="selenium-screenshot-233.png" width="800px"&gt;&lt;/a&gt;</msg>
+<status status="PASS" starttime="20200517 11:53:57.732" endtime="20200517 11:53:58.143"></status>
+</kw>
+<kw name="Close Browser" library="SeleniumLibrary">
+<doc>Closes the current browser.</doc>
+<status status="PASS" starttime="20200517 11:53:58.143" endtime="20200517 11:54:00.472"></status>
+</kw>
+<status status="PASS" starttime="20200517 11:53:57.732" endtime="20200517 11:54:00.472"></status>
+</kw>
+<doc>Consulta Venda
+Sendo um administrador da página que possui vendas realizadas
+Quero poder consultar-las
+Para que eu possa ficar atualizado</doc>
+<status status="FAIL" starttime="20200517 11:53:33.638" endtime="20200517 11:54:00.472"></status>
+</suite>
+<suite id="s1-s4" name="Inclui Venda" source="C:\Projects\Desafio Conductor\frontend\tests\inclui_venda.robot">
+<kw name="Login Session" library="BasePage" type="setup">
+<kw name="Open Session" library="BasePage">
+<kw name="Open Browser" library="SeleniumLibrary">
+<doc>Opens a new browser instance to the optional ``url``.</doc>
+<arguments>
+<arg>${base_url}/login</arg>
+<arg>chrome</arg>
+<arg>options=add_experimental_option('excludeSwitches', ['enable-logging'])</arg>
+</arguments>
+<msg timestamp="20200517 11:54:00.519" level="INFO">Opening browser 'chrome' to base url 'http://provaqa.marketpay.com.br:9083/desafioqa/login'.</msg>
+<status status="PASS" starttime="20200517 11:54:00.519" endtime="20200517 11:54:07.925"></status>
+</kw>
+<kw name="Set Selenium Implicit Wait" library="SeleniumLibrary">
+<doc>Sets the implicit wait value used by Selenium.</doc>
+<arguments>
+<arg>5</arg>
+</arguments>
+<status status="PASS" starttime="20200517 11:54:07.926" endtime="20200517 11:54:07.929"></status>
+</kw>
+<kw name="Set Window Size" library="SeleniumLibrary">
+<doc>Sets current windows size to given ``width`` and ``height``.</doc>
+<arguments>
+<arg>1280</arg>
+<arg>800</arg>
+</arguments>
+<status status="PASS" starttime="20200517 11:54:07.929" endtime="20200517 11:54:12.114"></status>
+</kw>
+<status status="PASS" starttime="20200517 11:54:00.519" endtime="20200517 11:54:12.114"></status>
+</kw>
+<kw name="Login With" library="LoginPage">
+<arguments>
+<arg>admin</arg>
+<arg>admin</arg>
+</arguments>
+<kw name="Input Text" library="SeleniumLibrary">
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<arguments>
+<arg>name:username</arg>
+<arg>${user}</arg>
+</arguments>
+<msg timestamp="20200517 11:54:12.116" level="INFO">Typing text 'admin' into text field 'name:username'.</msg>
+<status status="PASS" starttime="20200517 11:54:12.115" endtime="20200517 11:54:12.327"></status>
+</kw>
+<kw name="Input Text" library="SeleniumLibrary">
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<arguments>
+<arg>name:password</arg>
+<arg>${pass}</arg>
+</arguments>
+<msg timestamp="20200517 11:54:12.328" level="INFO">Typing text 'admin' into text field 'name:password'.</msg>
+<status status="PASS" starttime="20200517 11:54:12.327" endtime="20200517 11:54:12.519"></status>
+</kw>
+<kw name="Click Element" library="SeleniumLibrary">
+<doc>Click the element identified by ``locator``.</doc>
+<arguments>
+<arg>class:btn</arg>
+</arguments>
+<msg timestamp="20200517 11:54:12.520" level="INFO">Clicking element 'class:btn'.</msg>
+<status status="PASS" starttime="20200517 11:54:12.519" endtime="20200517 11:54:14.313"></status>
+</kw>
+<status status="PASS" starttime="20200517 11:54:12.115" endtime="20200517 11:54:14.314"></status>
+</kw>
+<status status="PASS" starttime="20200517 11:54:00.519" endtime="20200517 11:54:14.314"></status>
+</kw>
+<test id="s1-s4-t1" name="Incluir vendas com sucesso">
+<kw name="Dado que eu tenha um cliente &quot;cliente06.json&quot; cadastrado" library="actions">
+<kw name="Get Client Json" library="actions">
+<arguments>
+<arg>${file}</arg>
+</arguments>
+<assign>
+<var>${json}</var>
+</assign>
+<kw name="Get File" library="OperatingSystem">
+<doc>Returns the contents of a specified file.</doc>
+<arguments>
+<arg>resources/fixtures/${file}</arg>
+</arguments>
+<assign>
+<var>${file}</var>
+</assign>
+<msg timestamp="20200517 11:54:14.319" level="INFO" html="yes">Getting file '&lt;a href="file://C:\Projects\Desafio Conductor\frontend\resources\fixtures\cliente06.json"&gt;C:\Projects\Desafio Conductor\frontend\resources\fixtures\cliente06.json&lt;/a&gt;'.</msg>
+<msg timestamp="20200517 11:54:14.320" level="INFO">${file} = {
+    "nome": "Ana Pereira",
+    "cpf": "123.456.543-21",
+    "ativo": "Ativo",
+    "saldo": "800"
+}</msg>
+<status status="PASS" starttime="20200517 11:54:14.319" endtime="20200517 11:54:14.320"></status>
+</kw>
+<kw name="Evaluate" library="BuiltIn">
+<doc>Evaluates the given expression in Python and returns the results.</doc>
+<arguments>
+<arg>json.loads($file)</arg>
+<arg>json</arg>
+</arguments>
+<assign>
+<var>${json}</var>
+</assign>
+<msg timestamp="20200517 11:54:14.321" level="INFO">${json} = {'nome': 'Ana Pereira', 'cpf': '123.456.543-21', 'ativo': 'Ativo', 'saldo': '800'}</msg>
+<status status="PASS" starttime="20200517 11:54:14.320" endtime="20200517 11:54:14.321"></status>
+</kw>
+<msg timestamp="20200517 11:54:14.322" level="INFO">${json} = {'nome': 'Ana Pereira', 'cpf': '123.456.543-21', 'ativo': 'Ativo', 'saldo': '800'}</msg>
+<status status="PASS" starttime="20200517 11:54:14.318" endtime="20200517 11:54:14.322"></status>
+</kw>
+<kw name="Go To Client Form" library="CadClientePage">
+<kw name="Click Element" library="SeleniumLibrary">
+<doc>Click the element identified by ``locator``.</doc>
+<arguments>
+<arg>xpath://span[text()='QA']</arg>
+</arguments>
+<msg timestamp="20200517 11:54:14.323" level="INFO">Clicking element 'xpath://span[text()='QA']'.</msg>
+<status status="PASS" starttime="20200517 11:54:14.322" endtime="20200517 11:54:14.447"></status>
+</kw>
+<kw name="Click Element" library="SeleniumLibrary">
+<doc>Click the element identified by ``locator``.</doc>
+<arguments>
+<arg>xpath://span[text()='Clientes']</arg>
+</arguments>
+<msg timestamp="20200517 11:54:14.449" level="INFO">Clicking element 'xpath://span[text()='Clientes']'.</msg>
+<status status="PASS" starttime="20200517 11:54:14.448" endtime="20200517 11:54:14.571"></status>
+</kw>
+<kw name="Click Element" library="SeleniumLibrary">
+<doc>Click the element identified by ``locator``.</doc>
+<arguments>
+<arg>xpath://li/a[@title='Incluir']/span[text()='Incluir']</arg>
+</arguments>
+<msg timestamp="20200517 11:54:14.572" level="INFO">Clicking element 'xpath://li/a[@title='Incluir']/span[text()='Incluir']'.</msg>
+<status status="PASS" starttime="20200517 11:54:14.572" endtime="20200517 11:54:15.655"></status>
+</kw>
+<kw name="Wait Until Element Is Visible" library="SeleniumLibrary">
+<doc>Waits until the element ``locator`` is visible.</doc>
+<arguments>
+<arg>xpath://label[text()='Incluir Cliente']</arg>
+</arguments>
+<status status="PASS" starttime="20200517 11:54:15.657" endtime="20200517 11:54:15.731"></status>
+</kw>
+<status status="PASS" starttime="20200517 11:54:14.322" endtime="20200517 11:54:15.731"></status>
+</kw>
+<kw name="Create new Client" library="CadClientePage">
+<arguments>
+<arg>${json}</arg>
+</arguments>
+<kw name="Input Text" library="SeleniumLibrary">
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<arguments>
+<arg>css:input[name=nome]</arg>
+<arg>${json['nome']}</arg>
+</arguments>
+<msg timestamp="20200517 11:54:15.735" level="INFO">Typing text 'Ana Pereira' into text field 'css:input[name=nome]'.</msg>
+<status status="PASS" starttime="20200517 11:54:15.734" endtime="20200517 11:54:16.085"></status>
+</kw>
+<kw name="Input Text" library="SeleniumLibrary">
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<arguments>
+<arg>css:input[name=cpf]</arg>
+<arg>${json['cpf']}</arg>
+</arguments>
+<msg timestamp="20200517 11:54:16.086" level="INFO">Typing text '123.456.543-21' into text field 'css:input[name=cpf]'.</msg>
+<status status="PASS" starttime="20200517 11:54:16.086" endtime="20200517 11:54:16.293"></status>
+</kw>
+<kw name="Click Element" library="SeleniumLibrary">
+<doc>Click the element identified by ``locator``.</doc>
+<arguments>
+<arg>id:status</arg>
+</arguments>
+<msg timestamp="20200517 11:54:16.293" level="INFO">Clicking element 'id:status'.</msg>
+<status status="PASS" starttime="20200517 11:54:16.293" endtime="20200517 11:54:16.447"></status>
+</kw>
+<kw name="Click Element" library="SeleniumLibrary">
+<doc>Click the element identified by ``locator``.</doc>
+<arguments>
+<arg>xpath://option[text()='${json['ativo']}']</arg>
+</arguments>
+<msg timestamp="20200517 11:54:16.448" level="INFO">Clicking element 'xpath://option[text()='Ativo']'.</msg>
+<status status="PASS" starttime="20200517 11:54:16.447" endtime="20200517 11:54:16.542"></status>
+</kw>
+<kw name="Input Text" library="SeleniumLibrary">
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<arguments>
+<arg>css:input[name=saldoCliente]</arg>
+<arg>${json['saldo']}</arg>
+</arguments>
+<msg timestamp="20200517 11:54:16.543" level="INFO">Typing text '800' into text field 'css:input[name=saldoCliente]'.</msg>
+<status status="PASS" starttime="20200517 11:54:16.542" endtime="20200517 11:54:16.695"></status>
+</kw>
+<kw name="Click Element" library="SeleniumLibrary">
+<doc>Click the element identified by ``locator``.</doc>
+<arguments>
+<arg>id:botaoSalvar</arg>
+</arguments>
+<msg timestamp="20200517 11:54:16.695" level="INFO">Clicking element 'id:botaoSalvar'.</msg>
+<status status="PASS" starttime="20200517 11:54:16.695" endtime="20200517 11:54:16.825"></status>
+</kw>
+<status status="PASS" starttime="20200517 11:54:15.732" endtime="20200517 11:54:16.826"></status>
+</kw>
+<kw name="Então devo ver a mensagem &quot;Cliente salvo com sucesso&quot;" library="actions">
+<kw name="Wait Until Element Contains" library="SeleniumLibrary">
+<doc>Waits until the element ``locator`` contains ``text``.</doc>
+<arguments>
+<arg>${USER_SAVE}</arg>
+<arg>${messenger}</arg>
+</arguments>
+<status status="PASS" starttime="20200517 11:54:16.827" endtime="20200517 11:54:17.974"></status>
+</kw>
+<status status="PASS" starttime="20200517 11:54:16.827" endtime="20200517 11:54:17.974"></status>
+</kw>
+<kw name="Set Test Variable" library="BuiltIn">
+<doc>Makes a variable available everywhere within the scope of the current test.</doc>
+<arguments>
+<arg>${json}</arg>
+</arguments>
+<msg timestamp="20200517 11:54:17.975" level="INFO">${json} = {'nome': 'Ana Pereira', 'cpf': '123.456.543-21', 'ativo': 'Ativo', 'saldo': '800'}</msg>
+<status status="PASS" starttime="20200517 11:54:17.975" endtime="20200517 11:54:17.975"></status>
+</kw>
+<status status="PASS" starttime="20200517 11:54:14.317" endtime="20200517 11:54:17.975"></status>
+</kw>
+<kw name="Quando eu incluo uma transação" library="actions">
+<kw name="Go To Transaction Form" library="incVendaPage">
+<kw name="Click Element" library="SeleniumLibrary">
+<doc>Click the element identified by ``locator``.</doc>
+<arguments>
+<arg>xpath://span[text()='QA']</arg>
+</arguments>
+<msg timestamp="20200517 11:54:17.977" level="INFO">Clicking element 'xpath://span[text()='QA']'.</msg>
+<status status="PASS" starttime="20200517 11:54:17.977" endtime="20200517 11:54:18.097"></status>
+</kw>
+<kw name="Click Element" library="SeleniumLibrary">
+<doc>Click the element identified by ``locator``.</doc>
+<arguments>
+<arg>xpath://span[text()='Transações']</arg>
+</arguments>
+<msg timestamp="20200517 11:54:18.099" level="INFO">Clicking element 'xpath://span[text()='Transações']'.</msg>
+<status status="PASS" starttime="20200517 11:54:18.098" endtime="20200517 11:54:18.209"></status>
+</kw>
+<kw name="Click Element" library="SeleniumLibrary">
+<doc>Click the element identified by ``locator``.</doc>
+<arguments>
+<arg>xpath://li/a[@title='Dashboard']/span[text()='Incluir']</arg>
+</arguments>
+<msg timestamp="20200517 11:54:18.209" level="INFO">Clicking element 'xpath://li/a[@title='Dashboard']/span[text()='Incluir']'.</msg>
+<status status="PASS" starttime="20200517 11:54:18.209" endtime="20200517 11:54:19.117"></status>
+</kw>
+<kw name="Wait Until Element Is Visible" library="SeleniumLibrary">
+<doc>Waits until the element ``locator`` is visible.</doc>
+<arguments>
+<arg>xpath://label[text()='Incluir Transacao']</arg>
+</arguments>
+<status status="PASS" starttime="20200517 11:54:19.117" endtime="20200517 11:54:19.175"></status>
+</kw>
+<status status="PASS" starttime="20200517 11:54:17.976" endtime="20200517 11:54:19.176"></status>
+</kw>
+<kw name="Click Element" library="SeleniumLibrary">
+<doc>Click the element identified by ``locator``.</doc>
+<arguments>
+<arg>${DROP_NAME}</arg>
+</arguments>
+<msg timestamp="20200517 11:54:19.176" level="INFO">Clicking element 'name:cliente'.</msg>
+<status status="PASS" starttime="20200517 11:54:19.176" endtime="20200517 11:54:19.327"></status>
+</kw>
+<kw name="Click Element" library="SeleniumLibrary">
+<doc>Click the element identified by ``locator``.</doc>
+<arguments>
+<arg>xpath://select/option[text()='${json['nome']}']</arg>
+</arguments>
+<msg timestamp="20200517 11:54:19.328" level="INFO">Clicking element 'xpath://select/option[text()='Ana Pereira']'.</msg>
+<status status="PASS" starttime="20200517 11:54:19.327" endtime="20200517 11:54:19.443"></status>
+</kw>
+<kw name="Input Text" library="SeleniumLibrary">
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<arguments>
+<arg>${DROP_VALUE}</arg>
+<arg>${json['saldo']}</arg>
+</arguments>
+<msg timestamp="20200517 11:54:19.444" level="INFO">Typing text '800' into text field 'name:valorTransacao'.</msg>
+<status status="PASS" starttime="20200517 11:54:19.443" endtime="20200517 11:54:19.602"></status>
+</kw>
+<kw name="Click Element" library="SeleniumLibrary">
+<doc>Click the element identified by ``locator``.</doc>
+<arguments>
+<arg>${BUTTON_INCLUD}</arg>
+</arguments>
+<msg timestamp="20200517 11:54:19.603" level="INFO">Clicking element 'id:botaoSalvar'.</msg>
+<status status="PASS" starttime="20200517 11:54:19.603" endtime="20200517 11:54:19.711"></status>
+</kw>
+<kw name="Então devo ver a mensagem &quot;Venda realizada com sucesso&quot;" library="actions">
+<kw name="Wait Until Element Contains" library="SeleniumLibrary">
+<doc>Waits until the element ``locator`` contains ``text``.</doc>
+<arguments>
+<arg>${USER_SAVE}</arg>
+<arg>${messenger}</arg>
+</arguments>
+<status status="PASS" starttime="20200517 11:54:19.712" endtime="20200517 11:54:20.697"></status>
+</kw>
+<status status="PASS" starttime="20200517 11:54:19.712" endtime="20200517 11:54:20.698"></status>
+</kw>
+<status status="PASS" starttime="20200517 11:54:17.976" endtime="20200517 11:54:20.698"></status>
+</kw>
+<kw name="Então devo ver a mensagem &quot;Venda realizada com sucesso&quot;" library="actions">
+<kw name="Wait Until Element Contains" library="SeleniumLibrary">
+<doc>Waits until the element ``locator`` contains ``text``.</doc>
+<arguments>
+<arg>${USER_SAVE}</arg>
+<arg>${messenger}</arg>
+</arguments>
+<status status="PASS" starttime="20200517 11:54:20.701" endtime="20200517 11:54:20.724"></status>
+</kw>
+<status status="PASS" starttime="20200517 11:54:20.699" endtime="20200517 11:54:20.724"></status>
+</kw>
+<status status="PASS" starttime="20200517 11:54:14.314" endtime="20200517 11:54:20.724" critical="yes"></status>
+</test>
+<kw name="Close Session" library="BasePage" type="teardown">
+<kw name="Capture Page Screenshot" library="SeleniumLibrary">
+<doc>Takes a screenshot of the current page and embeds it into a log file.</doc>
+<msg timestamp="20200517 11:54:21.154" level="INFO" html="yes">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="selenium-screenshot-234.png"&gt;&lt;img src="selenium-screenshot-234.png" width="800px"&gt;&lt;/a&gt;</msg>
+<status status="PASS" starttime="20200517 11:54:20.727" endtime="20200517 11:54:21.155"></status>
+</kw>
+<kw name="Close Browser" library="SeleniumLibrary">
+<doc>Closes the current browser.</doc>
+<status status="PASS" starttime="20200517 11:54:21.155" endtime="20200517 11:54:23.459"></status>
+</kw>
+<status status="PASS" starttime="20200517 11:54:20.727" endtime="20200517 11:54:23.459"></status>
+</kw>
+<doc>Incluir Venda
+Sendo um administrador da página que possui clientes cadastrados
+Quero poder Incluir transações realizadas pelos meus clientes cadastrados
+Para que eu possa manter o site atualizado</doc>
+<status status="PASS" starttime="20200517 11:54:00.472" endtime="20200517 11:54:23.459"></status>
+</suite>
+<suite id="s1-s5" name="Login" source="C:\Projects\Desafio Conductor\frontend\tests\login.robot">
+<kw name="Open Session" library="BasePage" type="setup">
+<kw name="Open Browser" library="SeleniumLibrary">
+<doc>Opens a new browser instance to the optional ``url``.</doc>
+<arguments>
+<arg>${base_url}/login</arg>
+<arg>chrome</arg>
+<arg>options=add_experimental_option('excludeSwitches', ['enable-logging'])</arg>
+</arguments>
+<msg timestamp="20200517 11:54:23.505" level="INFO">Opening browser 'chrome' to base url 'http://provaqa.marketpay.com.br:9083/desafioqa/login'.</msg>
+<status status="PASS" starttime="20200517 11:54:23.505" endtime="20200517 11:54:30.560"></status>
+</kw>
+<kw name="Set Selenium Implicit Wait" library="SeleniumLibrary">
+<doc>Sets the implicit wait value used by Selenium.</doc>
+<arguments>
+<arg>5</arg>
+</arguments>
+<status status="PASS" starttime="20200517 11:54:30.560" endtime="20200517 11:54:30.563"></status>
+</kw>
+<kw name="Set Window Size" library="SeleniumLibrary">
+<doc>Sets current windows size to given ``width`` and ``height``.</doc>
+<arguments>
+<arg>1280</arg>
+<arg>800</arg>
+</arguments>
+<status status="PASS" starttime="20200517 11:54:30.563" endtime="20200517 11:54:34.731"></status>
+</kw>
+<status status="PASS" starttime="20200517 11:54:23.505" endtime="20200517 11:54:34.732"></status>
+</kw>
+<test id="s1-s5-t1" name="Login com sucesso">
+<kw name="Dado que eu acesso a página de Login" library="actions">
+<kw name="Go To" library="SeleniumLibrary">
+<doc>Navigates the current browser window to the provided ``url``.</doc>
+<arguments>
+<arg>${base_url}/login</arg>
+</arguments>
+<msg timestamp="20200517 11:54:34.735" level="INFO">Opening url 'http://provaqa.marketpay.com.br:9083/desafioqa/login'</msg>
+<status status="PASS" starttime="20200517 11:54:34.735" endtime="20200517 11:54:35.109"></status>
+</kw>
+<status status="PASS" starttime="20200517 11:54:34.734" endtime="20200517 11:54:35.110"></status>
+</kw>
+<kw name="Quando eu submeto minhas credenciais &quot;admin&quot; e &quot;admin&quot;" library="actions">
+<kw name="Login With" library="LoginPage">
+<arguments>
+<arg>${user}</arg>
+<arg>${pass}</arg>
+</arguments>
+<kw name="Input Text" library="SeleniumLibrary">
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<arguments>
+<arg>name:username</arg>
+<arg>${user}</arg>
+</arguments>
+<msg timestamp="20200517 11:54:35.119" level="INFO">Typing text 'admin' into text field 'name:username'.</msg>
+<status status="PASS" starttime="20200517 11:54:35.115" endtime="20200517 11:54:35.397"></status>
+</kw>
+<kw name="Input Text" library="SeleniumLibrary">
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<arguments>
+<arg>name:password</arg>
+<arg>${pass}</arg>
+</arguments>
+<msg timestamp="20200517 11:54:35.399" level="INFO">Typing text 'admin' into text field 'name:password'.</msg>
+<status status="PASS" starttime="20200517 11:54:35.398" endtime="20200517 11:54:35.661"></status>
+</kw>
+<kw name="Click Element" library="SeleniumLibrary">
+<doc>Click the element identified by ``locator``.</doc>
+<arguments>
+<arg>class:btn</arg>
+</arguments>
+<msg timestamp="20200517 11:54:35.662" level="INFO">Clicking element 'class:btn'.</msg>
+<status status="PASS" starttime="20200517 11:54:35.662" endtime="20200517 11:54:37.447"></status>
+</kw>
+<status status="PASS" starttime="20200517 11:54:35.112" endtime="20200517 11:54:37.447"></status>
+</kw>
+<status status="PASS" starttime="20200517 11:54:35.111" endtime="20200517 11:54:37.448"></status>
+</kw>
+<kw name="Então devo ser autenticado" library="actions">
+<kw name="Wait Until Element Is Visible" library="SeleniumLibrary">
+<doc>Waits until the element ``locator`` is visible.</doc>
+<arguments>
+<arg>${LOG_USER}</arg>
+</arguments>
+<status status="PASS" starttime="20200517 11:54:37.451" endtime="20200517 11:54:37.506"></status>
+</kw>
+<kw name="Element Text Should Be" library="SeleniumLibrary">
+<doc>Verifies that element ``locator`` contains exact the text ``expected``.</doc>
+<arguments>
+<arg>${LOG_USER}</arg>
+<arg>${msg_aut}</arg>
+</arguments>
+<msg timestamp="20200517 11:54:37.507" level="INFO">Verifying element 'class:page-title' contains exact text 'Bem vindo ao Desafio'.</msg>
+<status status="PASS" starttime="20200517 11:54:37.506" endtime="20200517 11:54:37.538"></status>
+</kw>
+<status status="PASS" starttime="20200517 11:54:37.450" endtime="20200517 11:54:37.539"></status>
+</kw>
+<status status="PASS" starttime="20200517 11:54:34.732" endtime="20200517 11:54:37.539" critical="yes"></status>
+</test>
+<test id="s1-s5-t2" name="Login com usuário incorreto">
+<kw name="Login com credenciais inválidas">
+<arguments>
+<arg>incorreto</arg>
+<arg>admin</arg>
+<arg>Credenciais inválidas</arg>
+</arguments>
+<kw name="Dado que eu acesso a página de Login" library="actions">
+<kw name="Go To" library="SeleniumLibrary">
+<doc>Navigates the current browser window to the provided ``url``.</doc>
+<arguments>
+<arg>${base_url}/login</arg>
+</arguments>
+<msg timestamp="20200517 11:54:37.544" level="INFO">Opening url 'http://provaqa.marketpay.com.br:9083/desafioqa/login'</msg>
+<status status="PASS" starttime="20200517 11:54:37.544" endtime="20200517 11:54:37.855"></status>
+</kw>
+<status status="PASS" starttime="20200517 11:54:37.543" endtime="20200517 11:54:37.856"></status>
+</kw>
+<kw name="Quando eu submeto minhas credenciais &quot;${user}&quot; e &quot;${pass}&quot;" library="actions">
+<kw name="Login With" library="LoginPage">
+<arguments>
+<arg>${user}</arg>
+<arg>${pass}</arg>
+</arguments>
+<kw name="Input Text" library="SeleniumLibrary">
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<arguments>
+<arg>name:username</arg>
+<arg>${user}</arg>
+</arguments>
+<msg timestamp="20200517 11:54:37.860" level="INFO">Typing text 'incorreto' into text field 'name:username'.</msg>
+<status status="PASS" starttime="20200517 11:54:37.859" endtime="20200517 11:54:38.114"></status>
+</kw>
+<kw name="Input Text" library="SeleniumLibrary">
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<arguments>
+<arg>name:password</arg>
+<arg>${pass}</arg>
+</arguments>
+<msg timestamp="20200517 11:54:38.114" level="INFO">Typing text 'admin' into text field 'name:password'.</msg>
+<status status="PASS" starttime="20200517 11:54:38.114" endtime="20200517 11:54:38.348"></status>
+</kw>
+<kw name="Click Element" library="SeleniumLibrary">
+<doc>Click the element identified by ``locator``.</doc>
+<arguments>
+<arg>class:btn</arg>
+</arguments>
+<msg timestamp="20200517 11:54:38.352" level="INFO">Clicking element 'class:btn'.</msg>
+<status status="PASS" starttime="20200517 11:54:38.348" endtime="20200517 11:54:39.074"></status>
+</kw>
+<status status="PASS" starttime="20200517 11:54:37.858" endtime="20200517 11:54:39.075"></status>
+</kw>
+<status status="PASS" starttime="20200517 11:54:37.856" endtime="20200517 11:54:39.076"></status>
+</kw>
+<kw name="Então devo ver a mensagem de erro" library="actions">
+<arguments>
+<arg>${messenger}</arg>
+</arguments>
+<kw name="Wait Until Element Contains" library="SeleniumLibrary">
+<doc>Waits until the element ``locator`` contains ``text``.</doc>
+<arguments>
+<arg>${ALERT_ERROR}</arg>
+<arg>${msg_error}</arg>
+</arguments>
+<status status="PASS" starttime="20200517 11:54:39.078" endtime="20200517 11:54:39.139"></status>
+</kw>
+<status status="PASS" starttime="20200517 11:54:39.076" endtime="20200517 11:54:39.140"></status>
+</kw>
+<status status="PASS" starttime="20200517 11:54:37.543" endtime="20200517 11:54:39.140"></status>
+</kw>
+<status status="PASS" starttime="20200517 11:54:37.542" endtime="20200517 11:54:39.141" critical="yes"></status>
+</test>
+<test id="s1-s5-t3" name="Login com senha incorreta">
+<kw name="Login com credenciais inválidas">
+<arguments>
+<arg>admin</arg>
+<arg>incorreto</arg>
+<arg>Credenciais inválidas</arg>
+</arguments>
+<kw name="Dado que eu acesso a página de Login" library="actions">
+<kw name="Go To" library="SeleniumLibrary">
+<doc>Navigates the current browser window to the provided ``url``.</doc>
+<arguments>
+<arg>${base_url}/login</arg>
+</arguments>
+<msg timestamp="20200517 11:54:39.145" level="INFO">Opening url 'http://provaqa.marketpay.com.br:9083/desafioqa/login'</msg>
+<status status="PASS" starttime="20200517 11:54:39.145" endtime="20200517 11:54:39.531"></status>
+</kw>
+<status status="PASS" starttime="20200517 11:54:39.144" endtime="20200517 11:54:39.532"></status>
+</kw>
+<kw name="Quando eu submeto minhas credenciais &quot;${user}&quot; e &quot;${pass}&quot;" library="actions">
+<kw name="Login With" library="LoginPage">
+<arguments>
+<arg>${user}</arg>
+<arg>${pass}</arg>
+</arguments>
+<kw name="Input Text" library="SeleniumLibrary">
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<arguments>
+<arg>name:username</arg>
+<arg>${user}</arg>
+</arguments>
+<msg timestamp="20200517 11:54:39.536" level="INFO">Typing text 'admin' into text field 'name:username'.</msg>
+<status status="PASS" starttime="20200517 11:54:39.536" endtime="20200517 11:54:39.773"></status>
+</kw>
+<kw name="Input Text" library="SeleniumLibrary">
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<arguments>
+<arg>name:password</arg>
+<arg>${pass}</arg>
+</arguments>
+<msg timestamp="20200517 11:54:39.775" level="INFO">Typing text 'incorreto' into text field 'name:password'.</msg>
+<status status="PASS" starttime="20200517 11:54:39.774" endtime="20200517 11:54:40.028"></status>
+</kw>
+<kw name="Click Element" library="SeleniumLibrary">
+<doc>Click the element identified by ``locator``.</doc>
+<arguments>
+<arg>class:btn</arg>
+</arguments>
+<msg timestamp="20200517 11:54:40.028" level="INFO">Clicking element 'class:btn'.</msg>
+<status status="PASS" starttime="20200517 11:54:40.028" endtime="20200517 11:54:40.713"></status>
+</kw>
+<status status="PASS" starttime="20200517 11:54:39.535" endtime="20200517 11:54:40.713"></status>
+</kw>
+<status status="PASS" starttime="20200517 11:54:39.533" endtime="20200517 11:54:40.713"></status>
+</kw>
+<kw name="Então devo ver a mensagem de erro" library="actions">
+<arguments>
+<arg>${messenger}</arg>
+</arguments>
+<kw name="Wait Until Element Contains" library="SeleniumLibrary">
+<doc>Waits until the element ``locator`` contains ``text``.</doc>
+<arguments>
+<arg>${ALERT_ERROR}</arg>
+<arg>${msg_error}</arg>
+</arguments>
+<status status="PASS" starttime="20200517 11:54:40.714" endtime="20200517 11:54:40.773"></status>
+</kw>
+<status status="PASS" starttime="20200517 11:54:40.713" endtime="20200517 11:54:40.773"></status>
+</kw>
+<status status="PASS" starttime="20200517 11:54:39.144" endtime="20200517 11:54:40.774"></status>
+</kw>
+<status status="PASS" starttime="20200517 11:54:39.143" endtime="20200517 11:54:40.774" critical="yes"></status>
+</test>
+<test id="s1-s5-t4" name="Login com campos vazios">
+<kw name="Login com credenciais inválidas">
+<arguments>
+<arg>${EMPTY}</arg>
+<arg>${EMPTY}</arg>
+<arg>Credenciais inválidas</arg>
+</arguments>
+<kw name="Dado que eu acesso a página de Login" library="actions">
+<kw name="Go To" library="SeleniumLibrary">
+<doc>Navigates the current browser window to the provided ``url``.</doc>
+<arguments>
+<arg>${base_url}/login</arg>
+</arguments>
+<msg timestamp="20200517 11:54:40.777" level="INFO">Opening url 'http://provaqa.marketpay.com.br:9083/desafioqa/login'</msg>
+<status status="PASS" starttime="20200517 11:54:40.777" endtime="20200517 11:54:41.160"></status>
+</kw>
+<status status="PASS" starttime="20200517 11:54:40.777" endtime="20200517 11:54:41.160"></status>
+</kw>
+<kw name="Quando eu submeto minhas credenciais &quot;${user}&quot; e &quot;${pass}&quot;" library="actions">
+<kw name="Login With" library="LoginPage">
+<arguments>
+<arg>${user}</arg>
+<arg>${pass}</arg>
+</arguments>
+<kw name="Input Text" library="SeleniumLibrary">
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<arguments>
+<arg>name:username</arg>
+<arg>${user}</arg>
+</arguments>
+<msg timestamp="20200517 11:54:41.163" level="INFO">Typing text '' into text field 'name:username'.</msg>
+<status status="PASS" starttime="20200517 11:54:41.163" endtime="20200517 11:54:41.317"></status>
+</kw>
+<kw name="Input Text" library="SeleniumLibrary">
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<arguments>
+<arg>name:password</arg>
+<arg>${pass}</arg>
+</arguments>
+<msg timestamp="20200517 11:54:41.318" level="INFO">Typing text '' into text field 'name:password'.</msg>
+<status status="PASS" starttime="20200517 11:54:41.317" endtime="20200517 11:54:41.495"></status>
+</kw>
+<kw name="Click Element" library="SeleniumLibrary">
+<doc>Click the element identified by ``locator``.</doc>
+<arguments>
+<arg>class:btn</arg>
+</arguments>
+<msg timestamp="20200517 11:54:41.496" level="INFO">Clicking element 'class:btn'.</msg>
+<status status="PASS" starttime="20200517 11:54:41.495" endtime="20200517 11:54:42.230"></status>
+</kw>
+<status status="PASS" starttime="20200517 11:54:41.162" endtime="20200517 11:54:42.231"></status>
+</kw>
+<status status="PASS" starttime="20200517 11:54:41.161" endtime="20200517 11:54:42.231"></status>
+</kw>
+<kw name="Então devo ver a mensagem de erro" library="actions">
+<arguments>
+<arg>${messenger}</arg>
+</arguments>
+<kw name="Wait Until Element Contains" library="SeleniumLibrary">
+<doc>Waits until the element ``locator`` contains ``text``.</doc>
+<arguments>
+<arg>${ALERT_ERROR}</arg>
+<arg>${msg_error}</arg>
+</arguments>
+<status status="PASS" starttime="20200517 11:54:42.232" endtime="20200517 11:54:42.285"></status>
+</kw>
+<status status="PASS" starttime="20200517 11:54:42.231" endtime="20200517 11:54:42.286"></status>
+</kw>
+<status status="PASS" starttime="20200517 11:54:40.777" endtime="20200517 11:54:42.286"></status>
+</kw>
+<status status="PASS" starttime="20200517 11:54:40.777" endtime="20200517 11:54:42.289" critical="yes"></status>
+</test>
+<kw name="Close Session" library="BasePage" type="teardown">
+<kw name="Capture Page Screenshot" library="SeleniumLibrary">
+<doc>Takes a screenshot of the current page and embeds it into a log file.</doc>
+<msg timestamp="20200517 11:54:42.811" level="INFO" html="yes">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="selenium-screenshot-235.png"&gt;&lt;img src="selenium-screenshot-235.png" width="800px"&gt;&lt;/a&gt;</msg>
+<status status="PASS" starttime="20200517 11:54:42.294" endtime="20200517 11:54:42.811"></status>
+</kw>
+<kw name="Close Browser" library="SeleniumLibrary">
+<doc>Closes the current browser.</doc>
+<status status="PASS" starttime="20200517 11:54:42.811" endtime="20200517 11:54:45.433"></status>
+</kw>
+<status status="PASS" starttime="20200517 11:54:42.293" endtime="20200517 11:54:45.433"></status>
+</kw>
+<doc>Login
+Sendo um administrador da página
+Quero me autenticar no sitema
+Para que eu possa gerenciar os clientes e as transações</doc>
+<status status="PASS" starttime="20200517 11:54:23.459" endtime="20200517 11:54:45.433"></status>
+</suite>
+<status status="FAIL" starttime="20200517 11:52:36.424" endtime="20200517 11:54:45.448"></status>
+</suite>
+<statistics>
+<total>
+<stat pass="10" fail="1">Critical Tests</stat>
+<stat pass="10" fail="1">All Tests</stat>
+</total>
+<tag>
+</tag>
+<suite>
+<stat pass="10" fail="1" id="s1" name="Tests">Tests</stat>
+<stat pass="3" fail="0" id="s1-s1" name="Cadastro Cliente">Tests.Cadastro Cliente</stat>
+<stat pass="2" fail="0" id="s1-s2" name="Consulta Cliente">Tests.Consulta Cliente</stat>
+<stat pass="0" fail="1" id="s1-s3" name="Consulta Venda">Tests.Consulta Venda</stat>
+<stat pass="1" fail="0" id="s1-s4" name="Inclui Venda">Tests.Inclui Venda</stat>
+<stat pass="4" fail="0" id="s1-s5" name="Login">Tests.Login</stat>
+</suite>
+</statistics>
+<errors>
+</errors>
+</robot>
