@@ -9,7 +9,7 @@ ${base_url}     http://provaqa.marketpay.com.br:9083/desafioqa
 Open Session        #Acessa a página inicial e define algumas configurações
     Open Browser        ${base_url}/login       chrome      options=add_experimental_option('excludeSwitches', ['enable-logging'])
     Set Selenium Implicit Wait      5
-    Set Window Size     1280        800
+    Set Window Size     1280        700
 
 Close Session       #Define o fechamento do navegador e realiza uma screenshot
     Capture Page Screenshot
